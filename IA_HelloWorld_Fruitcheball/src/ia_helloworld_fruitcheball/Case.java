@@ -23,7 +23,7 @@ public abstract class Case {
       this.carte = carte; 
       this.colonne = colonne;
       this.ligne = ligne; 
-      this.personne_sur_carte = null ; 
+      this.personne_sur_case = null ; 
       this.fruit_sur_case = null ; 
       
     }
@@ -67,27 +67,30 @@ public abstract class Case {
     public Fruit getFruitCase(){
       return fruit_sur_case ;   
     }
-    public void setFruitCase(Fruit f ){
-        this.fruit_sur_case = f ;
-    } 
+
     
     public Personnage getPersonneCase (){
         return personne_sur_case ; 
     }
     
-    public void setPeronneCase(Personnage p ){
-       this.personne_sur_carte = p ;  
+    public void ajoutePersonnage(Personnage p ){
+        personne_sur_case= p ; 
+    }
+    
+    public void supprimePersonnage(Personnage p ){ 
+        personne_sur_case = null ; 
+    }
+    
+    
+    public void ajouteFruit(Fruit f ){
+        fruit_sur_case = f;
+    }
+    
+    public void supprimeFruit(Fruit f){
+        fruit_sur_case = null;
     }
     
     public String toString(){
         return ligne+"/"+colonne; 
-    }
-    
-    public void ajouteFruit(Case ca , Fruit f ){
-        
-    }
-    
-    public void supprimeFruit(Case ca , Fruit f){
-        
     }
 }

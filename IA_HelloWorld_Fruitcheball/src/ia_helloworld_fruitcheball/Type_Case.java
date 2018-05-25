@@ -10,5 +10,5 @@ package ia_helloworld_fruitcheball;
  * @author emilien
  */
 public enum Type_Case {
-    cloture,sol;
+    cloture , sol ;
 }
