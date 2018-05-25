@@ -28,22 +28,27 @@ public abstract class Case {
         return ligne;
     }
 
+    //Met à jour la ligne de la case// 
     public void setLigne(int ligne) {
         this.ligne = ligne;
     }
-
+    
+    //Retourne la colonne de la case //
     public int getColonne() {
         return colonne;
     }
 
+    //Met à jour la colonne de la case//
     public void setColonne(int colonne) {
         this.colonne = colonne;
     }
 
+    //Renvoie la carte // 
     public Carte getCarte() {
         return carte;
     }
 
+    //Met à jour de la carte//
     public void setCarte(Carte carte) {
         this.carte = carte;
     }
