@@ -25,7 +25,10 @@ public class Parseur {
     private String infoEquipe1;
     private String infoEquipe2;
     private String infoEquipe3;
-    private String infoNotreEquipe; 
+     
+    private String zone0;
+    private String zone1;
+    private String zone2;
     
     private int nbCase;
     
@@ -156,8 +159,51 @@ public class Parseur {
        
     }
     
-    public void getPosEnnemi(String numEquipe){
-        numEquipe=splitRes[0] ; 
+    public void getNotreZone(){
+        String numEquipe=splitRes[0] ; 
+        
+         if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe0 = infoEquipe0.split(",");
+            String[] z0 = tabInfoEquipe0[6].split(":");
+            String[] z1 = tabInfoEquipe0[7].split(":");
+            String[] z2 = tabInfoEquipe0[8].split(":");
+            zone0 = getCoo(z0);
+            zone1 = getCoo(z1);
+            zone2 = getCoo(z2);
+            
+        }else if(splitRes[0].equals("1")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] z0 = tabInfoEquipe1[6].split(":");
+            String[] z1 = tabInfoEquipe1[7].split(":");
+            String[] z2 = tabInfoEquipe1[8].split(":");
+            zone0 = getCoo(z0);
+            zone1 = getCoo(z1);
+            zone2 = getCoo(z2);
+        }else if(splitRes[0].equals("2")){
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] z0 = tabInfoEquipe2[6].split(":");
+            String[] z1 = tabInfoEquipe2[7].split(":");
+            String[] z2 = tabInfoEquipe2[8].split(":");
+            zone0 = getCoo(z0);
+            zone1 = getCoo(z1);
+            zone2 = getCoo(z2);
+            
+        }else if(splitRes[0].equals("3")){
+            String[] tabInfoEquipe3 = infoEquipe3.split(",");
+            String[] z0 = tabInfoEquipe3[6].split(":");
+            String[] z1 = tabInfoEquipe3[7].split(":");
+            String[] z2 = tabInfoEquipe3[8].split(":");
+            zone0 = getCoo(z0);
+            zone1 = getCoo(z1);
+            zone2 = getCoo(z2);
+        }
+        
+        System.out.println("Coordonnées notre camp : \nZ0 : "+zone0+"\nZ1 : "+zone1+"\nZ2 : "+zone2);
+       
+    }
+    
+    public void getPosEnnemi(){
+        String numEquipe=splitRes[0] ; 
     }
     
     private String getCoo(String[] infoPerso){

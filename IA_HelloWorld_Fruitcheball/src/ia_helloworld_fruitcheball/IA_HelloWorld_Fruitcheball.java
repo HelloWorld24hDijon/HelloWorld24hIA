@@ -33,6 +33,7 @@ public class IA_HelloWorld_Fruitcheball {
         Parseur p = new Parseur("", c);
         p.creer_carte();
         p.getCooNosPerso();
+        p.getNotreZone();
         /*
         InetAddress adresseIP;
         
