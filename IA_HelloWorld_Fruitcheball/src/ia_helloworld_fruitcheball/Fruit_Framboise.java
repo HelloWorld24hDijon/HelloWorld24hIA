@@ -9,6 +9,15 @@ package ia_helloworld_fruitcheball;
  *
  * @author Alexiane
  */
-public class Fruit_Framboise {
+public class Fruit_Framboise extends Fruit {
+
+    public Fruit_Framboise(Case ca) {
+        super(ca);
+    }
+
+    @Override
+    public Type_Fruit getType() {
+        return Type_Fruit.framboise ;  
+    }
     
 }

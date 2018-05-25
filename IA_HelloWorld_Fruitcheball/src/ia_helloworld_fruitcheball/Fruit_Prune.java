@@ -9,6 +9,15 @@ package ia_helloworld_fruitcheball;
  *
  * @author Alexiane
  */
-public class Fruit_Prune {
+public class Fruit_Prune  extends Fruit {
+
+    public Fruit_Prune(Case ca) {
+        super(ca);
+    }
+
+    @Override
+    public Type_Fruit getType() {
+        return Type_Fruit.prune ;
+    }
     
 }

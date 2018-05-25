@@ -9,6 +9,14 @@ package ia_helloworld_fruitcheball;
  *
  * @author Alexiane
  */
-public class Fruit {
+public abstract class Fruit {
     
+    private Case ca ; 
+        
+    public Fruit (Case ca) {
+        this.ca = ca ; 
+        
+    }
+    
+    public abstract Type_Fruit getType(); 
 }
