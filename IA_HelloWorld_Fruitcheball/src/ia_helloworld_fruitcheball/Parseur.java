@@ -5,6 +5,8 @@
  */
 package ia_helloworld_fruitcheball;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author emili
@@ -18,6 +20,7 @@ public class Parseur {
     private String input; //fichier envoyé par le serveur
     private String[] splitRes;
     private String[] tabCarte;
+    private ArrayList<String> tabCooCasesFruits;
     
                                 //Nos troupes
     private String quetcherback;
@@ -48,6 +51,7 @@ public class Parseur {
     public Parseur(String _adresseFichier, Carte _carte){
         this.adresseFichier=_adresseFichier;
         this.carte=_carte;
+        tabCooCasesFruits = new ArrayList<>();
         input = "0_4_13:13,XXXXXXXXXXXXX,X......01...X,X...XX.XX...X,X.X......4X.X,X1X.......X1X,X.....3.....X,X...0...2...X,X0....3....0X,X1X.......X.X,X.X4.....4X.X,X...XX.XX...X,X...10.0....X,XXXXXXXXXXXXX_Equipe0,P,P0:3:5:4,P1:5:1:x,P2:4:6:2,Z,Z0:2:1,Z1:1:1,Z2:1:2,G,2,F,F0:1,F1:1,F2:0,F3:0,F4:0_Equipe1,P,P0:8:11:x,P1:9:8:x,P2:11:8:x,Z,Z0:11:10,Z1:11:11,Z2:10:11,G,2,F,F0:0,F1:2,F2:0,F3:0,F4:1_Equipe2,P,P0:1:11:x,P1:4:11:x,P2:3:8:x,Z,Z0:2:11,Z1:1:10,Z2:1:11,G,-3,F,F0:0,F1:0,F2:0,F3:0,F4:2_Equipe3,P,P0:11:5:0,P1:7:5:x,P2:10:1:x,Z,Z0:11:1,Z1:10:1,Z2:11:2,G,0,F,F0:0,F1:0,F2:0,F3:0,F4:0";
     }
     
@@ -111,6 +115,10 @@ public class Parseur {
                      case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
                      case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
                 }
+                 
+                 if((0<=c)&&(c<5)){
+                     tabCooCasesFruits.add(nouvelleCase.toString());
+                 }
             
             }
    
@@ -141,6 +149,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
             
         }else if(splitRes[0].equals("2")){
             
@@ -151,6 +162,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
             
         }else if(splitRes[0].equals("3")){
             String[] tabInfoEquipe3 = infoEquipe3.split(",");
@@ -160,6 +174,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
         }
         
         System.out.println("num équipe : "+numEquipe+"\ncoo de quetcherback : "+quetcherback+" possède : "+getFruit(qFruit)+"\ncoo de lanceur1 : "+lanceur1+" possède : "+getFruit(l1Fruit)+"\ncoo de lanceur2 : "+lanceur2+" possède : "+getFruit(l2Fruit));
