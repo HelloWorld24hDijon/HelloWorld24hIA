@@ -5,6 +5,8 @@
  */
 package ia_helloworld_fruitcheball;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author emili
@@ -18,9 +20,20 @@ public class Parseur {
     private String input; //fichier envoyé par le serveur
     private String[] splitRes;
     private String[] tabCarte;
+    private ArrayList<String> tabCooCasesFruits;
+    
+                                //Nos troupes
     private String quetcherback;
     private String lanceur1;
     private String lanceur2;
+    private String qFruit; //fruit dans inventaire
+    private String l1Fruit;
+    private String l2Fruit;
+                                //Troupes ennemies
+    private String quetcherbackEnnemi;
+    private String lanceur1Ennemi;
+    private String lanceur2Ennemi;
+    
     private String infoEquipe0;
     private String infoEquipe1;
     private String infoEquipe2;
@@ -38,6 +51,7 @@ public class Parseur {
     public Parseur(String _adresseFichier, Carte _carte){
         this.adresseFichier=_adresseFichier;
         this.carte=_carte;
+        tabCooCasesFruits = new ArrayList<>();
         input = "0_4_13:13,XXXXXXXXXXXXX,X......01...X,X...XX.XX...X,X.X......4X.X,X1X.......X1X,X.....3.....X,X...0...2...X,X0....3....0X,X1X.......X.X,X.X4.....4X.X,X...XX.XX...X,X...10.0....X,XXXXXXXXXXXXX_Equipe0,P,P0:3:5:4,P1:5:1:x,P2:4:6:2,Z,Z0:2:1,Z1:1:1,Z2:1:2,G,2,F,F0:1,F1:1,F2:0,F3:0,F4:0_Equipe1,P,P0:8:11:x,P1:9:8:x,P2:11:8:x,Z,Z0:11:10,Z1:11:11,Z2:10:11,G,2,F,F0:0,F1:2,F2:0,F3:0,F4:1_Equipe2,P,P0:1:11:x,P1:4:11:x,P2:3:8:x,Z,Z0:2:11,Z1:1:10,Z2:1:11,G,-3,F,F0:0,F1:0,F2:0,F3:0,F4:2_Equipe3,P,P0:11:5:0,P1:7:5:x,P2:10:1:x,Z,Z0:11:1,Z1:10:1,Z2:11:2,G,0,F,F0:0,F1:0,F2:0,F3:0,F4:0";
     }
     
@@ -71,14 +85,7 @@ public class Parseur {
         infoEquipe1 = splitRes[4];
         infoEquipe2 = splitRes[5];
         infoEquipe3 = splitRes[6];
-        
-        /*switch (splitRes[0]){
-            case "0" : infoNotreEquipe = splitRes[3];
-            case "1" : infoNotreEquipe = splitRes[4];
-            case "2" : infoNotreEquipe = splitRes[5];
-            case "3" : infoNotreEquipe = splitRes[6];
-        }
-      getCooNosPerso(); */
+      
 
     }
     
@@ -99,17 +106,22 @@ public class Parseur {
                     ;break;    
 
                 }
-                /*
+                
                 //gestion des différents fruits
                  switch(c){
-                     case '0' : this.carte.ajouteFruit(i,numColonne, new Fruit_Mirabelle());break;
-                     case '1' : this.carte.ajouteFruit(i,numColonne, new Fruit_Prune());break;
-                     case '2' : this.carte.ajouteFruit(i,numColonne, new Fruit_Cerise());break;
-                     case '3' : this.carte.ajouteFruit(i,numColonne, new Fruit_Framboise());break;
-                     case '4' : this.carte.ajouteFruit(i,numColonne, new Fruit_Chataigne());break;
-                }*/
+                     case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
+                     case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
+                     case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
+                     case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
+                     case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
+                }
+                 
+                 if((0<=c)&&(c<5)){
+                     tabCooCasesFruits.add(nouvelleCase.toString());
+                 }
             
             }
+   
         
         }
     }
@@ -125,6 +137,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
             
         }else if(splitRes[0].equals("1")){
             String[] tabInfoEquipe1 = infoEquipe1.split(",");
@@ -134,6 +149,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
             
         }else if(splitRes[0].equals("2")){
             
@@ -144,6 +162,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
             
         }else if(splitRes[0].equals("3")){
             String[] tabInfoEquipe3 = infoEquipe3.split(",");
@@ -153,9 +174,12 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
         }
         
-        System.out.println("num équipe : "+numEquipe+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
+        System.out.println("num équipe : "+numEquipe+"\ncoo de quetcherback : "+quetcherback+" possède : "+getFruit(qFruit)+"\ncoo de lanceur1 : "+lanceur1+" possède : "+getFruit(l1Fruit)+"\ncoo de lanceur2 : "+lanceur2+" possède : "+getFruit(l2Fruit));
        
     }
     
@@ -202,11 +226,56 @@ public class Parseur {
        
     }
     
+    /**
+     * Corespond au fruit présent dans l'inventaire de chaque personnage
+     */
+    public String getFruitInventairePerso(String[] coo){
+        return coo[3];
+    }
+    
+    
     public void getPosEnnemi(){
-        String numEquipe=splitRes[0] ; 
+        String numEquipe=splitRes[0];
+      
+       /*if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] perso0 = tabInfoEquipe1[2].split(":");
+            String[] perso1 = tabInfoEquipe1[3].split(":");
+            String[] perso2 = tabInfoEquipe1[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            String equipeEnnemi1="Equipe 1";
+            
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] perso02 = tabInfoEquipe2[2].split(":");
+            String[] perso12 = tabInfoEquipe2[3].split(":");
+            String[] perso22 = tabInfoEquipe2[4].split(":");
+            quetcherback = getCoo(perso02);
+            lanceur1 = getCoo(perso12);
+            lanceur2 = getCoo(perso22);
+            String equipeEnnemi2="Equipe 2";
+       }
+        System.out.println("num équipe : "+equipeEnnemi1+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
+    */
     }
     
     private String getCoo(String[] coo){
         return coo[1]+"/"+coo[2];
+    }
+    
+    private String getFruit(String fruit){
+        String _fruit="";
+        
+        switch(fruit){
+            case "x" : _fruit="rien";break;
+            case "0" : _fruit="Mirabelle";break;
+            case "1" : _fruit="Prune";break;
+            case "2" : _fruit="Cerise";break;
+            case "3" : _fruit="Framboise";break;
+            case "4" : _fruit="Chataigne";break;
+        }
+        
+        return _fruit;
     }
 }
