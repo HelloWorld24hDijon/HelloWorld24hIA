@@ -4,13 +4,8 @@
  * and open the template in the editor.
  */
 package ia_helloworld_fruitcheball;
-<<<<<<< HEAD
-
 import java.util.ArrayList;
-
-=======
 import java.lang.Math;
->>>>>>> 0dfa87e8e5f6bc4081b37fe5f2358d1af68feb32
 /**
  *
  * @author aurian
