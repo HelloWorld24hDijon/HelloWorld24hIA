@@ -57,11 +57,12 @@ public abstract class Case {
     public void setCarte(Carte carte) {
         this.carte = carte;
     }
-   
-       
+          
     public abstract Type_Case getType(); 
         
+    
     public abstract boolean franchissable();
+    
     
     public Fruit getFruitCase(){
       return fruit_sur_case ;   
@@ -80,5 +81,13 @@ public abstract class Case {
     
     public String toString(){
         return ligne+"/"+colonne; 
+    }
+    
+    public void ajouteFruit(Case ca , Fruit f ){
+        
+    }
+    
+    public void supprimeFruit(Case ca , Fruit f){
+        
     }
 }
