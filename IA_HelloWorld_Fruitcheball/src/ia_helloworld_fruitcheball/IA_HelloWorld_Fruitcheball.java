@@ -34,11 +34,13 @@ public class IA_HelloWorld_Fruitcheball {
         Parseur p = new Parseur("", c);
         p.creer_carte();
         p.getCooNosPerso();
-        
+        p.getNotreZone();
         Graph g = new Graph(c);
         c.getGraph(g);
         c.genererGrapheSimple();
+
         
+
         /*
         InetAddress adresseIP;
         
