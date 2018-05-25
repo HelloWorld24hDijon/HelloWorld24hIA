@@ -64,9 +64,9 @@ public class Parseur {
     public Carte creer_carte(){
         decoupeString();
         creationCarte();
-        for(Case c : carte.getListeCase()){
+        /*for(Case c : carte.getListeCase()){
             System.out.println(c.toString());
-        }
+        }*/
         return carte;
     }
 

@@ -88,7 +88,7 @@ public class Dijkstra {
             }
                 current = predecessor.get(current);
         }
-        //Collections.reverse(path);
+        Collections.reverse(path);
         //path.remove(end);
     }
     
