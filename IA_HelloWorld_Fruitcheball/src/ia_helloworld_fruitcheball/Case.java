@@ -59,6 +59,6 @@ public abstract class Case {
     public abstract boolean franchissable();
     
     public String toString(){
-        return ""; 
+        return ligne+"/"+colonne; 
     }
 }
