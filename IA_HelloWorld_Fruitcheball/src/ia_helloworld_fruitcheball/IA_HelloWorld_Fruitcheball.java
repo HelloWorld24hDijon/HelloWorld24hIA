@@ -50,6 +50,9 @@ public class IA_HelloWorld_Fruitcheball {
         for(Vertex v : d.getPath()) {
                 System.out.println(v.getCoordinates());
             }
+        
+        IA ia = new IA(c, g, p);
+        ia.ordresPersos();
 
         /*
         InetAddress adresseIP;
