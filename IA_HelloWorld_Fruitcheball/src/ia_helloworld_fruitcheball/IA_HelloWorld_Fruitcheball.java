@@ -7,12 +7,16 @@ package ia_helloworld_fruitcheball;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -88,20 +92,57 @@ public class IA_HelloWorld_Fruitcheball {
             System.out.println(adresseIP.getHostAddress());
             java.net.Socket s = new java.net.Socket(adresseIP,1337);             
             
-            //PARTIE TRAITEMENT DU SOCKET ET ENVOI DES DONNEES            
-            Scanner sc1 = new Scanner(s.getInputStream());
+            //PARTIE TRAITEMENT DU SOCKET ET ENVOI DES DONNEES
             PrintStream p = new PrintStream(s.getOutputStream());
-            BufferedReader b =  new BufferedReader(new InputStreamReader (s.getInputStream()));
             
+            InputStream is = s.getInputStream();
+            InputStreamReader ir = new InputStreamReader(is);
+            BufferedReader rd = new BufferedReader(ir);
+                        
             //DEFINE PLAYER INSTRUCTION HERE
             p.println("Hello World");
-            String rec = b.readLine();
-            System.out.println(rec);
-            while(rec!="FIN"){                
-                p.println("S-S-E\n");
-            }
+            String msgSrv = rd.readLine();
+            System.out.println("first :" + msgSrv);
 
-            System.out.println();
+            Thread envoyer = new Thread(new Runnable() {
+                String msgClient;
+                
+                @Override
+                public void run() {
+                    while(true) {
+                        msgClient = "S-S-E";
+                        p.println(msgClient);
+                        System.out.println(">> envoie >>" + msgClient);
+                        p.flush();
+                    }
+                }
+            });
+            envoyer.start();
+            
+            Thread recevoir = new Thread(new Runnable() {
+                String msgSrv;                
+                int iteration;
+                
+                @Override
+                public void run() {
+                    try {
+                        msgSrv = rd.readLine();
+                        while(true) {           
+                            msgSrv = rd.readLine();
+                            if(msgSrv.equals("FIN")) {
+                                break;
+                            }
+                            System.out.println("*** iteration "+iteration+" ***");
+                            System.out.println("<< recoit <<" + msgSrv);
+                            
+                            iteration++;
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(IA_HelloWorld_Fruitcheball.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            recevoir.start();
         }catch (UnknownHostException ex){
             ex.printStackTrace();
         }catch (IOException ex){

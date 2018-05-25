@@ -15,7 +15,7 @@ public abstract class Case {
     private int ligne ; 
     private int colonne ; 
     private Carte carte; 
-    private Personnage personne_sur_carte ; 
+    private Personnage personne_sur_case ; 
     private Fruit fruit_sur_case ; 
     
     //Constructeur// 
@@ -71,7 +71,7 @@ public abstract class Case {
     } 
     
     public Personnage getPersonneCase (){
-        return personne_sur_carte ; 
+        return personne_sur_case ; 
     }
     
     public void setPeronneCase(Personnage p ){
