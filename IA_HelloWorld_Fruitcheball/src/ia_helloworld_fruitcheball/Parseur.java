@@ -29,6 +29,11 @@ public class Parseur {
     private String quetcherback;
     private String lanceur1;
     private String lanceur2;
+    private String scoreGlobal ; 
+
+    
+    
+    
     private String qFruit; //fruit dans inventaire
     private String l1Fruit;
     private String l2Fruit;
@@ -332,33 +337,22 @@ public class Parseur {
         System.out.println("Mirabelle : "+getNbMirabelle()+" | Prune : "+getNbPrune()+" | Cerise : "+getNbCerise()+" | Framboise : "+getNbFramboise()+" | Chataigne : "+getNbChataigne());
     }
     
-    
-    public void getPosEnnemi(){
-        String numEquipe=splitRes[0];
-      
-        //if(equipeEnnemi.get())
+    public void getScoreNotreEquipe(){
         
-       /*if (splitRes[0].equals("0")){
-            String[] tabInfoEquipe1 = infoEquipe1.split(",");
-            String[] perso0 = tabInfoEquipe1[2].split(":");
-            String[] perso1 = tabInfoEquipe1[3].split(":");
-            String[] perso2 = tabInfoEquipe1[4].split(":");
-            quetcherback = getCoo(perso0);
-            lanceur1 = getCoo(perso1);
-            lanceur2 = getCoo(perso2);
-            String equipeEnnemi1="Equipe 1";
-            
-            String[] tabInfoEquipe2 = infoEquipe2.split(",");
-            String[] perso02 = tabInfoEquipe2[2].split(":");
-            String[] perso12 = tabInfoEquipe2[3].split(":");
-            String[] perso22 = tabInfoEquipe2[4].split(":");
-            quetcherback = getCoo(perso02);
-            lanceur1 = getCoo(perso12);
-            lanceur2 = getCoo(perso22);
-            String equipeEnnemi2="Equipe 2";
-       }
-        System.out.println("num équipe : "+equipeEnnemi1+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
-    */
+        if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe0 = infoEquipe0.split(",");    
+            setScoreGlobal(tabInfoEquipe0[10]) ;  
+        } else if (splitRes[0].equals("1")) {
+             String[] tabInfoEquipe1 = infoEquipe1.split(",");    
+            setScoreGlobal(tabInfoEquipe1[10]) ;  
+        } else if (splitRes[0].equals("2")) {
+             String[] tabInfoEquipe2 = infoEquipe2.split(",");    
+            setScoreGlobal(tabInfoEquipe2[10]) ;  
+        } else if (splitRes[0].equals("3")) {
+             String[] tabInfoEquipe3 = infoEquipe3.split(",");    
+            setScoreGlobal(tabInfoEquipe3[10]) ;  
+        } 
+        System.out.println("Score de notre équipe : "+ getScoreGlobal());
     }
     
     private String getCoo(String[] coo){
@@ -436,4 +430,42 @@ public class Parseur {
     public void setNbChataigne(String nbChataigne) {
         this.nbChataigne = nbChataigne;
     }
+    
+    public String getScoreGlobal() {
+        return scoreGlobal;
+    }
+
+    public void setScoreGlobal(String scoreGlobal) {
+        this.scoreGlobal = scoreGlobal;
+    }
+    
+    /**************************************************************ENNEMI*/
+    public void getPosEnnemi(){
+        String numEquipe=splitRes[0];
+      
+        //if(equipeEnnemi.get())
+        
+       /*if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] perso0 = tabInfoEquipe1[2].split(":");
+            String[] perso1 = tabInfoEquipe1[3].split(":");
+            String[] perso2 = tabInfoEquipe1[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            String equipeEnnemi1="Equipe 1";
+            
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] perso02 = tabInfoEquipe2[2].split(":");
+            String[] perso12 = tabInfoEquipe2[3].split(":");
+            String[] perso22 = tabInfoEquipe2[4].split(":");
+            quetcherback = getCoo(perso02);
+            lanceur1 = getCoo(perso12);
+            lanceur2 = getCoo(perso22);
+            String equipeEnnemi2="Equipe 2";
+       }
+        System.out.println("num équipe : "+equipeEnnemi1+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
+    */
+    }
+    
 }

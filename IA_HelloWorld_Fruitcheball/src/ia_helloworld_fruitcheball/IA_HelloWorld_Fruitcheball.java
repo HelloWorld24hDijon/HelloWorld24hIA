@@ -33,13 +33,15 @@ public class IA_HelloWorld_Fruitcheball {
         Carte c = new Carte();
         Parseur p = new Parseur("", c);
         p.creer_carte();
-        p.getCooNosPerso();
-        p.getNotreZone();
-        p.getPosEnnemi();
+       
         Graph g = new Graph(c);
         c.getGraph(g);
         c.genererGrapheSimple();
+        p.getCooNosPerso();
+        p.getNotreZone();
+        p.getPosEnnemi();
         p.getFruitPossede();
+        p.getScoreNotreEquipe();
 
         //System.out.println(g.getVertex("1/1"));
         
