@@ -15,13 +15,13 @@ public class Carte {
     /*ATTRIBUTS*/
     private ArrayList<Case> listeCase;
     private Graph graphe_simple;
-    private Carte m ; 
+    
     
     
     /*CONSTRUCTEUR*/
-    public Carte(Carte m ){
+    public Carte(){
         this.listeCase = new ArrayList();
-        this.graphe_simple= new Graph(m) ; 
+        graphe_simple= null; 
     }
     
     /*METHODES*/
@@ -32,7 +32,7 @@ public class Carte {
     
      private void genererGrapheSimple(){
        for ( Case c : getListeCase()){
-           graphe_simple.addVertex(c.toString());
+           graphe_simple.addVertex(c.toString(), c.getLigne() , c.getColonne());
        }
        
        for ( Case c : getListeCase()){
