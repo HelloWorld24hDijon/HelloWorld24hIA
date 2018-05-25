@@ -29,12 +29,18 @@ public class IA_HelloWorld_Fruitcheball {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        
         Carte c = new Carte();
         Parseur p = new Parseur("", c);
         p.creer_carte();
         p.getCooNosPerso();
         p.getNotreZone();
         p.getPosEnnemi();
+        Graph g = new Graph(c);
+        c.getGraph(g);
+        c.genererGrapheSimple();
+
+       
         /*
         InetAddress adresseIP;
         

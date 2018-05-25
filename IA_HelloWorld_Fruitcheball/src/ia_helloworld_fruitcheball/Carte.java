@@ -28,13 +28,17 @@ public class Carte {
         listeCase.add(_c);
     }
     
+    public void getGraph(Graph g){
+        graphe_simple = g;
+    }
+    
     /*METHODES*/
     //Renvoie la liste des cases
     public ArrayList<Case> getListeCase() {
         return this.listeCase;
     }
     
-     private void genererGrapheSimple(){
+     public void genererGrapheSimple(){
        for ( Case c : listeCase){
            graphe_simple.addVertex(c.toString(), c.getLigne() , c.getColonne());
        }
@@ -67,7 +71,7 @@ public class Carte {
                 
             }
             //A mettre en commentaire si on ne veut pas afficher la matrice
-            System.out.println(this.stringMatrixGrapheSimple());
+            //System.out.println(this.stringMatrixGrapheSimple());
         }
        
        
@@ -75,7 +79,7 @@ public class Carte {
        //générer les voisins 
       for ( Case c : getListeCase()){
              Vertex caseActuelle = graphe_simple.getVertex(c.toString());
-             System.out.println("Coordonnée de la case : "+c.getLigne()+"/"+c.getColonne());
+             //System.out.println("Coordonnée de la case : "+c.getLigne()+"/"+c.getColonne());
         }   
      }
      
@@ -83,14 +87,14 @@ public class Carte {
      private void addEdgeAndLabelGraphSimple(Case c, Case c1) {
         graphe_simple.addEdge(c.toString(), c1.toString());
         if(c1.getType()==Type_Case.cloture) {
-            graphe_simple.setLabel(c.toString(), c1.toString(),Integer.MAX_VALUE);
-            System.out.println("    Neighbour of "+c.toString()+" is a Mur");
-            System.out.println("    "+graphe_simple.getLabel(c.toString(), c1.toString()));
+            graphe_simple.setLabel(c.toString(), c1.toString(),9);
+            //System.out.println("    Neighbour of "+c.toString()+" is a Mur");
+            //System.out.println("    "+graphe_simple.getLabel(c.toString(), c1.toString()));
         }
         if(c1.getType()==Type_Case.sol) {
             graphe_simple.setLabel(c.toString(), c1.toString(),1);
-            System.out.println("    Neighbour of "+c.toString()+" is a MurDur");
-            System.out.println("    "+graphe_simple.getLabel(c.toString(), c1.toString()));
+            //System.out.println("    Neighbour of "+c.toString()+" is a MurDur");
+            //System.out.println("    "+graphe_simple.getLabel(c.toString(), c1.toString()));
         }
     }
      
