@@ -7,8 +7,8 @@ package ia_helloworld_fruitcheball;
 
 /**
  *
- * @author aheliot
+ * @author emilien
  */
-public class Socket {
-    
+public enum Type_Case {
+    cloture,sol;
 }
