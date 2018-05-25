@@ -27,12 +27,21 @@ public class Parseur {
     
                                 //Nos troupes
     private String quetcherback;
-
     private String lanceur1;
     private String lanceur2;
     private String qFruit; //fruit dans inventaire
     private String l1Fruit;
     private String l2Fruit;
+    
+                                //Nombre de fruits de l'équipe
+    private String nbMirabelle;
+    private String nbPrune;
+    private String nbCerise;
+    private String nbFramboise;
+    private String nbChataigne;
+
+    
+   
                                 //Troupes ennemies
     private HashMap<String,String[]> equipeEnnemi;
     
@@ -56,6 +65,7 @@ public class Parseur {
         this.carte=_carte;
         tabCooCasesFruits = new ArrayList<>();
         equipeEnnemi=new HashMap();
+        
         input = "0_4_13:13,XXXXXXXXXXXXX,X......01...X,X...XX.XX...X,X.X......4X.X,X1X.......X1X,X.....3.....X,X...0...2...X,X0....3....0X,X1X.......X.X,X.X4.....4X.X,X...XX.XX...X,X...10.0....X,XXXXXXXXXXXXX_Equipe0,P,P0:3:5:4,P1:5:1:x,P2:4:6:2,Z,Z0:2:1,Z1:1:1,Z2:1:2,G,2,F,F0:1,F1:1,F2:0,F3:0,F4:0_Equipe1,P,P0:8:11:x,P1:9:8:x,P2:11:8:x,Z,Z0:11:10,Z1:11:11,Z2:10:11,G,2,F,F0:0,F1:2,F2:0,F3:0,F4:1_Equipe2,P,P0:1:11:x,P1:4:11:x,P2:3:8:x,Z,Z0:2:11,Z1:1:10,Z2:1:11,G,-3,F,F0:0,F1:0,F2:0,F3:0,F4:2_Equipe3,P,P0:11:5:0,P1:7:5:x,P2:10:1:x,Z,Z0:11:1,Z1:10:1,Z2:11:2,G,0,F,F0:0,F1:0,F2:0,F3:0,F4:0";
     }
     
@@ -111,6 +121,21 @@ public class Parseur {
 
                 }
                 
+
+                //gestion des différents fruits
+                 /*switch(c){
+                     case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
+                     case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
+                     case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
+                     case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
+                     case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
+                }*/
+                 
+                 if((0<=c)&&(c<5)){
+                     tabCooCasesFruits.add(nouvelleCase);
+                 }
+            
+
                 if(nouvelleCase != null){
                     //gestion des différents fruits
                     switch(c){
@@ -125,6 +150,7 @@ public class Parseur {
                        tabCooCasesFruits.add(nouvelleCase);
                    }
                 }            
+
             }
    
         
@@ -247,42 +273,63 @@ public class Parseur {
         
         if (splitRes[0].equals("0")){
             String[] tabInfoEquipe0 = infoEquipe0.split(",");
-            String[] Mirabelle = tabInfoEquipe0[11].split(":");
-            String[] Prune = tabInfoEquipe0[12].split(":");
-            
-            
-            String[] Cerise = tabInfoEquipe0[13].split(":");
-            String[] Framboise = tabInfoEquipe0[14].split(":");
-            String[] Chataigne = tabInfoEquipe0[15].split(":");
-            
-            System.out.println("");
-      
+            String[] Mirabelle = tabInfoEquipe0[12].split(":");     
+            String[] Prune = tabInfoEquipe0[13].split(":");
+            String[] Cerise = tabInfoEquipe0[14].split(":");
+            String[] Framboise = tabInfoEquipe0[15].split(":");
+            String[] Chataigne = tabInfoEquipe0[16].split(":");
+        
+            setNbMirabelle(Mirabelle[1]);
+            setNbPrune(Prune[1]);
+            setNbCerise(Cerise[1]);
+            setNbFramboise(Framboise[1]);
+            setNbChataigne(Chataigne[1]);
             
         }else if(splitRes[0].equals("1")){
             String[] tabInfoEquipe1 = infoEquipe1.split(",");
-            String[] Mirabelle = tabInfoEquipe1[2].split(":");
-            String[] Prune = tabInfoEquipe1[3].split(":");
-            String[] Cerise = tabInfoEquipe1[4].split(":");
-            String[] Framboise = tabInfoEquipe1[4].split(":");
-            String[] Chataigne = tabInfoEquipe1[4].split(":");
+            String[] Mirabelle = tabInfoEquipe1[12].split(":");
+            String[] Prune = tabInfoEquipe1[13].split(":");
+            String[] Cerise = tabInfoEquipe1[14].split(":");
+            String[] Framboise = tabInfoEquipe1[15].split(":");
+            String[] Chataigne = tabInfoEquipe1[16].split(":");
+            
+            setNbMirabelle(Mirabelle[1]);
+            setNbPrune(Prune[1]);
+            setNbCerise(Cerise[1]);
+            setNbFramboise(Framboise[1]);
+            setNbChataigne(Chataigne[1]);
             
         }else if(splitRes[0].equals("2")){
             
            String[] tabInfoEquipe2 = infoEquipe2.split(",");
-            String[] Mirabelle = tabInfoEquipe2[2].split(":");
-            String[] Prune = tabInfoEquipe2[3].split(":");
-            String[] Cerise = tabInfoEquipe2[4].split(":");
-            String[] Framboise = tabInfoEquipe2[4].split(":");
-            String[] Chataigne = tabInfoEquipe2[4].split(":");
+            String[] Mirabelle = tabInfoEquipe2[12].split(":");
+            String[] Prune = tabInfoEquipe2[13].split(":");
+            String[] Cerise = tabInfoEquipe2[14].split(":");
+            String[] Framboise = tabInfoEquipe2[15].split(":");
+            String[] Chataigne = tabInfoEquipe2[16].split(":");
+            
+            setNbMirabelle(Mirabelle[1]);
+            setNbPrune(Prune[1]);
+            setNbCerise(Cerise[1]);
+            setNbFramboise(Framboise[1]);
+            setNbChataigne(Chataigne[1]);
             
         }else if(splitRes[0].equals("3")){
            String[] tabInfoEquipe3 = infoEquipe3.split(",");
-            String[] Mirabelle = tabInfoEquipe3[2].split(":");
-            String[] Prune = tabInfoEquipe3[3].split(":");
-            String[] Cerise = tabInfoEquipe3[4].split(":");
-            String[] Framboise = tabInfoEquipe3[4].split(":");
-            String[] Chataigne = tabInfoEquipe3[4].split(":");
+            String[] Mirabelle = tabInfoEquipe3[12].split(":");
+            String[] Prune = tabInfoEquipe3[13].split(":");
+            String[] Cerise = tabInfoEquipe3[14].split(":");
+            String[] Framboise = tabInfoEquipe3[15].split(":");
+            String[] Chataigne = tabInfoEquipe3[16].split(":");
+            
+            setNbMirabelle(Mirabelle[1]);
+            setNbPrune(Prune[1]);
+            setNbCerise(Cerise[1]);
+            setNbFramboise(Framboise[1]);
+            setNbChataigne(Chataigne[1]);
         }
+         
+        System.out.println("Mirabelle : "+getNbMirabelle()+" | Prune : "+getNbPrune()+" | Cerise : "+getNbCerise()+" | Framboise : "+getNbFramboise()+" | Chataigne : "+getNbChataigne());
     }
     
     
@@ -348,5 +395,45 @@ public class Parseur {
 
     public String getLanceur2() {
         return lanceur2;
+    }
+    
+    public String getNbMirabelle() {
+        return nbMirabelle;
+    }
+
+    public void setNbMirabelle(String nbMirabelle) {
+        this.nbMirabelle = nbMirabelle;
+    }
+
+    public String getNbPrune() {
+        return nbPrune;
+    }
+
+    public void setNbPrune(String nbPrune) {
+        this.nbPrune = nbPrune;
+    }
+
+    public String getNbCerise() {
+        return nbCerise;
+    }
+
+    public void setNbCerise(String nbCerise) {
+        this.nbCerise = nbCerise;
+    }
+
+    public String getNbFramboise() {
+        return nbFramboise;
+    }
+
+    public void setNbFramboise(String nbFramboise) {
+        this.nbFramboise = nbFramboise;
+    }
+
+    public String getNbChataigne() {
+        return nbChataigne;
+    }
+
+    public void setNbChataigne(String nbChataigne) {
+        this.nbChataigne = nbChataigne;
     }
 }

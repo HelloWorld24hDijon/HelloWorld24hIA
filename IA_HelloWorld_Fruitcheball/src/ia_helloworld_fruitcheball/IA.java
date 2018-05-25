@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package ia_helloworld_fruitcheball;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 
+=======
+import java.lang.Math;
+>>>>>>> 0dfa87e8e5f6bc4081b37fe5f2358d1af68feb32
 /**
  *
  * @author aurian
@@ -34,8 +38,26 @@ public class IA {
         dijkstra = new Dijkstra(graph);
     }
     
-    public Case caseFruitProche(Vertex v ){
-        return null ;
+    public String caseFruitProche(Vertex v ){
+        int ligneV = v.getLine();
+        int colonneV = v.getColumn();
+        int valeurMin = Integer.MAX_VALUE;
+        int ColMin = Integer.MAX_VALUE;
+        int LigMin = Integer.MAX_VALUE;
+        
+        for (Case c : parseur.getTabCooCasesFruits()){
+            int cL = c.getLigne(); 
+            int cO= c.getColonne();
+            
+            int distance = (int) Math.sqrt( ( cL - ligneV)*( cL - ligneV) +(cO -colonneV )*(cO -colonneV ));
+            if(distance < valeurMin){
+                valeurMin= distance;
+                ColMin=cO;
+                LigMin=cL;
+            }
+        }
+        String s = LigMin+"/"+ColMin;
+        return s;
     }
     
     public String ordresPersos(){

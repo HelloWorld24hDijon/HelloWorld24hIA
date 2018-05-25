@@ -39,6 +39,7 @@ public class IA_HelloWorld_Fruitcheball {
         Graph g = new Graph(c);
         c.getGraph(g);
         c.genererGrapheSimple();
+        p.getFruitPossede();
 
         //System.out.println(g.getVertex("1/1"));
         
