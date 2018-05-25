@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cryptofthejavadancer.Model.Carte.Graphes;
+package ia_helloworld_fruitcheball;
 
-import cryptofthejavadancer.Model.Carte.Map;
+import ia_helloworld_fruitcheball.Carte;
 import java.util.Collection;
 
 import java.util.HashMap;
@@ -17,11 +17,11 @@ import javafx.util.Pair;
  */
 public class Graph {
     
-    private final Map map;
+    private final Carte map;
     private final HashMap<String,Vertex> vertices;
     private final HashMap<Pair<Vertex,Vertex>,Integer> labels;
     
-    public Graph(Map m) {
+    public Graph(Carte m) {
         map = m;
         vertices = new HashMap<>();
         labels = new HashMap<>();

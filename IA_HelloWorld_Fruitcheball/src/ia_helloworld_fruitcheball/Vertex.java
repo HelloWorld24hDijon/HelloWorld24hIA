@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cryptofthejavadancer.Model.Carte.Graphes;
+package ia_helloworld_fruitcheball;
 
+import ia_helloworld_fruitcheball.Graph;
 import java.util.ArrayList;
 
 /**
