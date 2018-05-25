@@ -18,6 +18,13 @@ public class Parseur {
     private String input; //fichier envoyé par le serveur
     private String[] splitRes;
     private String[] tabCarte;
+    private String quetcherback;
+    private String lanceur1;
+    private String lanceur2;
+    private String infoEquipe0;
+    private String infoEquipe1;
+    private String infoEquipe2;
+    private String infoEquipe3;
     
     private int nbCase;
     
@@ -49,8 +56,6 @@ public class Parseur {
      */
     public void decoupeString(){
                                     //Différentes parties du code      
-        String[] infoEquipe;
-        String[] grilleCarte;
         
         //Récupère toutes les grandes parties du fichier séparées par "_"
         this.splitRes=input.split("_");
@@ -58,9 +63,18 @@ public class Parseur {
         //taille tableau récu^père la taille du tableau et les différentes lignes composant la map
         tabCarte= this.splitRes[2].split(",");
         
-        /*Récupère les équiques*/
-        infoEquipe= this.splitRes[3].split(",");
-        
+        infoEquipe0 = splitRes[3];
+        infoEquipe1 = splitRes[4];
+        infoEquipe2 = splitRes[5];
+        infoEquipe3 = splitRes[6];
+        /*
+        switch (splitRes[0]){
+            case "0" : infoNotreEquipe = splitRes[3];
+            case "1" : infoNotreEquipe = splitRes[4];
+            case "2" : infoNotreEquipe = splitRes[5];
+            case "3" : infoNotreEquipe = splitRes[6];
+        }*/
+
     }
     
     public void creationCarte() {
@@ -93,5 +107,18 @@ public class Parseur {
             }
         
         }
+    }
+    
+    public void getCooNosPerso(){
+        
+        
+        String[] tabInfoEquipe0 = infoEquipe0.split(",");
+        String[] perso0 = tabInfoEquipe0[2].split(":");
+        quetcherback = getCoo(perso0);
+        System.out.println("coo de quetcherback : "+quetcherback);
+    }
+    
+    private String getCoo(String[] infoPerso){
+        return infoPerso[1]+"/"+infoPerso[2];
     }
 }
