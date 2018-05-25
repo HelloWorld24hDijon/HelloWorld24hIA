@@ -66,16 +66,16 @@ public class IA {
         }
         
         System.out.println("cooLanceur1 : "+cooLanceur1);
-        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooQuetcherback)));
+        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooLanceur1)));
         dijkstra.calcul(graph.getVertex(cooLanceur1), graph.getVertex(caseFruitProche(graph.getVertex(cooLanceur1))));
         System.out.println("Chemin de Lanceur1 :");
-        cheminLanceur1 = cheminLanceur1;
+        cheminLanceur1 = dijkstra.getPath();;
         for(Vertex v : dijkstra.getPath()) {
             System.out.println(v.getCoordinates());
         }
         
         System.out.println("cooLanceur2 : "+cooLanceur2);
-        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooQuetcherback)));
+        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooLanceur2)));
         dijkstra.calcul(graph.getVertex(cooLanceur2), graph.getVertex(caseFruitProche(graph.getVertex(cooLanceur2))));
         System.out.println("Chemin de Lanceur2 :");
         cheminLanceur2 = dijkstra.getPath();
@@ -86,45 +86,62 @@ public class IA {
     }
     
     private String ordreFinal(){
-        String ordre = "";
-        if(cheminQuetcherback.get(1).getLine()>graph.getVertex(cooQuetcherback).getLine()){
-            ordre += "N";
+        String ordre0 = "";
+        String ordre1 = "";
+        String ordre2 = "";
+
+        if(cheminQuetcherback.get(2).getLine()==graph.getVertex(cooQuetcherback).getLine()){
+            ordre0 = "N";
+        }else{
+            if(cheminQuetcherback.get(2).getLine()<graph.getVertex(cooQuetcherback).getLine()){
+                ordre0 = "N";
+            }
+                if(cheminQuetcherback.get(2).getLine()>graph.getVertex(cooQuetcherback).getLine()){
+                    ordre0 = "S";
+                }
+                    if(cheminQuetcherback.get(2).getColumn()<graph.getVertex(cooQuetcherback).getColumn()){
+                        ordre0 = "E";
+                    }
+                        if(cheminQuetcherback.get(2).getColumn()>graph.getVertex(cooQuetcherback).getColumn()){
+                            ordre0 = "O";
+                        }
         }
-        if(cheminQuetcherback.get(1).getLine()<graph.getVertex(cooQuetcherback).getLine()){
-            ordre += "S";
+        ordre0 += "-";
+        
+        if(cheminLanceur1.get(2).getLine()==graph.getVertex(cooLanceur1).getLine()){
+            ordre1 = "P";
+        }else{
+            if(cheminLanceur1.get(2).getLine()<graph.getVertex(cooLanceur1).getLine()){
+                ordre1 = "N";
+            }
+            if(cheminLanceur1.get(2).getLine()>graph.getVertex(cooLanceur1).getLine()){
+                ordre1 = "S";
+            }
+            if(cheminLanceur1.get(2).getColumn()<graph.getVertex(cooLanceur1).getColumn()){
+                ordre1 = "E";
+            }
+            if(cheminLanceur1.get(2).getColumn()>graph.getVertex(cooLanceur1).getColumn()){
+                ordre1 = "O";
+            }
         }
-        if(cheminQuetcherback.get(1).getColumn()>graph.getVertex(cooQuetcherback).getColumn()){
-            ordre += "E";
+        ordre1 += "-";
+        
+        if(cheminLanceur2.get(2).getLine()==graph.getVertex(cooLanceur2).getLine()){
+            ordre2 = "P";
+        }else{
+            if(cheminLanceur2.get(2).getLine()<graph.getVertex(cooLanceur2).getLine()){
+                ordre2 = "N";
+            }
+            if(cheminLanceur2.get(2).getLine()>graph.getVertex(cooLanceur2).getLine()){
+                ordre2 = "S";
+            }
+            if(cheminLanceur2.get(2).getColumn()<graph.getVertex(cooLanceur2).getColumn()){
+                ordre2 = "E";
+            }
+            if(cheminLanceur2.get(2).getColumn()>graph.getVertex(cooLanceur2).getColumn()){
+                ordre2 = "O";
+            }
         }
-        if(cheminQuetcherback.get(1).getColumn()<graph.getVertex(cooQuetcherback).getColumn()){
-            ordre += "O";
-        }
-        ordre += "-";
-        if(cheminLanceur1.get(1).getLine()>graph.getVertex(cooLanceur1).getLine()){
-            ordre += "N";
-        }
-        if(cheminLanceur1.get(1).getLine()<graph.getVertex(cooLanceur1).getLine()){
-            ordre += "S";
-        }
-        if(cheminLanceur1.get(1).getColumn()>graph.getVertex(cooLanceur1).getColumn()){
-            ordre += "E";
-        }
-        if(cheminLanceur1.get(1).getColumn()<graph.getVertex(cooLanceur1).getColumn()){
-            ordre += "O";
-        }
-        ordre += "-";
-        if(cheminLanceur2.get(1).getLine()>graph.getVertex(cooLanceur2).getLine()){
-            ordre += "N";
-        }
-        if(cheminLanceur2.get(1).getLine()<graph.getVertex(cooLanceur2).getLine()){
-            ordre += "S";
-        }
-        if(cheminLanceur2.get(1).getColumn()>graph.getVertex(cooLanceur2).getColumn()){
-            ordre += "E";
-        }
-        if(cheminLanceur2.get(1).getColumn()<graph.getVertex(cooLanceur2).getColumn()){
-            ordre += "O";
-        }
-        return ordre+"\n";
+        return ordre0+ordre1+ordre2+"\n";
     }
 }
