@@ -35,12 +35,12 @@ public class IA_HelloWorld_Fruitcheball {
         p.creer_carte();
         p.getCooNosPerso();
         p.getNotreZone();
+        p.getPosEnnemi();
         Graph g = new Graph(c);
         c.getGraph(g);
         c.genererGrapheSimple();
 
-        
-
+       
         /*
         InetAddress adresseIP;
         
