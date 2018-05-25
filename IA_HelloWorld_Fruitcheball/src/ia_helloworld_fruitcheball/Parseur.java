@@ -213,7 +213,7 @@ public class Parseur {
             l1Fruit=getFruitInventairePerso(perso1);
             l2Fruit=getFruitInventairePerso(perso2);
             
-        }else if(splitRes[0].equals("3")){
+        }else if((splitRes[0].equals("3"))){
             String[] tabInfoEquipe3 = infoEquipe3.split(",");
             String[] perso0 = tabInfoEquipe3[2].split(":");
             String[] perso1 = tabInfoEquipe3[3].split(":");
@@ -380,6 +380,49 @@ public class Parseur {
         }
         
         return _fruit;
+    }
+    
+    public boolean inventairePleinLanceur(){
+        boolean estPlein=false;
+        
+        if(getNbMirabelle().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbPrune().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbCerise().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbFramboise().equals("1")){
+           estPlein=true; 
+        }
+        
+        return estPlein;
+        
+    }
+    
+       public boolean inventairePleinQuert(){
+        boolean estPlein=false;
+        
+        if(getNbMirabelle().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbPrune().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbCerise().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbFramboise().equals("1")){
+           estPlein=true; 
+        }
+        if(getNbChataigne().equals("1")){
+           estPlein=true; 
+        }
+        
+        return estPlein;
+        
     }
     
     public ArrayList<Case> getTabCooCasesFruits() {
