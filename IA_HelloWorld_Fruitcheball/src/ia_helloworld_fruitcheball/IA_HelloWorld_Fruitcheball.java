@@ -30,34 +30,7 @@ public class IA_HelloWorld_Fruitcheball {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
-        Carte c = new Carte();
-        Parseur p = new Parseur("", c);
-        p.creer_carte();
-       
-        Graph g = new Graph(c);
-        c.getGraph(g);
-        c.genererGrapheSimple();
-        p.getCooNosPerso();
-        p.getNotreZone();
-        p.getPosEnnemi();
-        p.getFruitPossede();
-        p.getScoreNotreEquipe();
-
-        //System.out.println(g.getVertex("1/1"));
-        
-        /*
-        Dijkstra d = new Dijkstra(g);
-        
-        d.calcul(g.getVertex("1/1"), g.getVertex("3/3"));
-
-        for(Vertex v : d.getPath()) {
-                System.out.println(v.getCoordinates());
-            }*/
-        
-        IA ia = new IA(c, g, p);
-        System.out.println(ia.ordresPersos());
-
-        /*
+ 
         InetAddress adresseIP;
         
         try{            
@@ -136,7 +109,28 @@ public class IA_HelloWorld_Fruitcheball {
                 msgSrv = rd.readLine();
                 System.out.println("*** iteration " +iteration+" ***");
                 System.out.println("<< recoit <<" + msgSrv);
-                String msgClient = "S-S-E";
+                
+                
+                
+                Carte c = new Carte();
+                Parseur p = new Parseur(msgSrv, c);
+                p.creer_carte();
+
+                Graph g = new Graph(c);
+                c.getGraph(g);
+                c.genererGrapheSimple();
+                p.getCooNosPerso();
+                p.getNotreZone();
+                p.getPosEnnemi();
+                p.getFruitPossede();
+                p.getScoreNotreEquipe();
+
+                IA ia = new IA(c, g, p);
+                System.out.println(ia.ordresPersos());
+                
+                
+
+                String msgClient = ia.ordresPersos();
                 ps.println(msgClient);
                 System.out.println(">> envoie >>" + msgClient);
                 ps.flush();
@@ -148,6 +142,5 @@ public class IA_HelloWorld_Fruitcheball {
         }catch (IOException ex){
             ex.printStackTrace();
         }
-        */
     }  
 }
