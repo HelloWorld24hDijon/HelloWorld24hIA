@@ -29,6 +29,8 @@ public class Parseur {
     private String quetcherback;
     private String lanceur1;
     private String lanceur2;
+    private String scoreGlobal ; 
+
     private String qFruit; //fruit dans inventaire
     private String l1Fruit;
     private String l2Fruit;
@@ -43,7 +45,27 @@ public class Parseur {
     
    
                                 //Troupes ennemies
-    private HashMap<String,String[]> equipeEnnemi;
+    private String equipeEnnemi0;
+    private String equipeEnnemi1;
+    private String equipeEnnemi2;
+    private String equipeEnnemi3;
+
+    private String quetcherbackEquipe0;
+    private String lanceur1Equipe0;
+    private String lanceur2Equipe0;
+
+    private String quetcherbackEquipe1;
+    private String lanceur1Equipe1;
+    private String lanceur2Equipe1;
+
+    private String quetcherbackEquipe2;
+    private String lanceur1Equipe2;
+    private String lanceur2Equipe2;
+
+    private String quetcherbackEquipe3;
+    private String lanceur1Equipe3;
+    private String lanceur2Equipe3;
+    
     
     
     private String infoEquipe0;
@@ -64,7 +86,7 @@ public class Parseur {
         this.adresseFichier=_adresseFichier;
         this.carte=_carte;
         tabCooCasesFruits = new ArrayList<>();
-        equipeEnnemi=new HashMap();
+        
         
         input = "0_4_13:13,XXXXXXXXXXXXX,X......01...X,X...XX.XX...X,X.X......4X.X,X1X.......X1X,X.....3.....X,X...0...2...X,X0....3....0X,X1X.......X.X,X.X4.....4X.X,X...XX.XX...X,X...10.0....X,XXXXXXXXXXXXX_Equipe0,P,P0:3:5:4,P1:5:1:x,P2:4:6:2,Z,Z0:2:1,Z1:1:1,Z2:1:2,G,2,F,F0:1,F1:1,F2:0,F3:0,F4:0_Equipe1,P,P0:8:11:x,P1:9:8:x,P2:11:8:x,Z,Z0:11:10,Z1:11:11,Z2:10:11,G,2,F,F0:0,F1:2,F2:0,F3:0,F4:1_Equipe2,P,P0:1:11:x,P1:4:11:x,P2:3:8:x,Z,Z0:2:11,Z1:1:10,Z2:1:11,G,-3,F,F0:0,F1:0,F2:0,F3:0,F4:2_Equipe3,P,P0:11:5:0,P1:7:5:x,P2:10:1:x,Z,Z0:11:1,Z1:10:1,Z2:11:2,G,0,F,F0:0,F1:0,F2:0,F3:0,F4:0";
     }
@@ -323,37 +345,26 @@ public class Parseur {
         System.out.println("Mirabelle : "+getNbMirabelle()+" | Prune : "+getNbPrune()+" | Cerise : "+getNbCerise()+" | Framboise : "+getNbFramboise()+" | Chataigne : "+getNbChataigne());
     }
     
-    
-    public void getPosEnnemi(){
-        String numEquipe=splitRes[0];
-      
-        //if(equipeEnnemi.get())
+    public void getScoreNotreEquipe(){
         
-       /*if (splitRes[0].equals("0")){
-            String[] tabInfoEquipe1 = infoEquipe1.split(",");
-            String[] perso0 = tabInfoEquipe1[2].split(":");
-            String[] perso1 = tabInfoEquipe1[3].split(":");
-            String[] perso2 = tabInfoEquipe1[4].split(":");
-            quetcherback = getCoo(perso0);
-            lanceur1 = getCoo(perso1);
-            lanceur2 = getCoo(perso2);
-            String equipeEnnemi1="Equipe 1";
-            
-            String[] tabInfoEquipe2 = infoEquipe2.split(",");
-            String[] perso02 = tabInfoEquipe2[2].split(":");
-            String[] perso12 = tabInfoEquipe2[3].split(":");
-            String[] perso22 = tabInfoEquipe2[4].split(":");
-            quetcherback = getCoo(perso02);
-            lanceur1 = getCoo(perso12);
-            lanceur2 = getCoo(perso22);
-            String equipeEnnemi2="Equipe 2";
-       }
-        System.out.println("num équipe : "+equipeEnnemi1+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
-    */
+        if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe0 = infoEquipe0.split(",");    
+            setScoreGlobal(tabInfoEquipe0[10]) ;  
+        } else if (splitRes[0].equals("1")) {
+             String[] tabInfoEquipe1 = infoEquipe1.split(",");    
+            setScoreGlobal(tabInfoEquipe1[10]) ;  
+        } else if (splitRes[0].equals("2")) {
+             String[] tabInfoEquipe2 = infoEquipe2.split(",");    
+            setScoreGlobal(tabInfoEquipe2[10]) ;  
+        } else if (splitRes[0].equals("3")) {
+             String[] tabInfoEquipe3 = infoEquipe3.split(",");    
+            setScoreGlobal(tabInfoEquipe3[10]) ;  
+        } 
+        System.out.println("Score de notre équipe : "+ getScoreGlobal());
     }
     
     private String getCoo(String[] coo){
-        return coo[1]+"/"+coo[2];
+        return coo[2]+"/"+coo[1];
     }
     
     private String getFruit(String fruit){
@@ -427,4 +438,67 @@ public class Parseur {
     public void setNbChataigne(String nbChataigne) {
         this.nbChataigne = nbChataigne;
     }
+    
+    public String getScoreGlobal() {
+        return scoreGlobal;
+    }
+
+    public void setScoreGlobal(String scoreGlobal) {
+        this.scoreGlobal = scoreGlobal;
+    }
+    
+    /**************************************************************ENNEMI*/
+    public void getPosEnnemi(){
+         String numEquipe=splitRes[0];
+         String equipeEnnemi0="";
+         String equipeEnnemi1="";
+         String equipeEnnemi2="";
+         String equipeEnnemi3="";
+        //if(equipeEnnemi.get())
+        
+       if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] perso0 = tabInfoEquipe1[2].split(":");
+            String[] perso1 = tabInfoEquipe1[3].split(":");
+            String[] perso2 = tabInfoEquipe1[4].split(":");
+            quetcherbackEquipe1 = getCoo(perso0);
+            lanceur1Equipe1 = getCoo(perso1);
+            lanceur2Equipe1 = getCoo(perso2);
+            equipeEnnemi1="Equipe 1";
+            
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] perso02 = tabInfoEquipe2[2].split(":");
+            String[] perso12 = tabInfoEquipe2[3].split(":");
+            String[] perso22 = tabInfoEquipe2[4].split(":");
+            quetcherbackEquipe2 = getCoo(perso02);
+            lanceur1Equipe2 = getCoo(perso12);
+            lanceur2Equipe2 = getCoo(perso22);
+            equipeEnnemi2="Equipe 2";
+            
+            String[] tabInfoEquipe3 = infoEquipe3.split(",");
+            String[] perso03 = tabInfoEquipe3[2].split(":");
+            String[] perso13 = tabInfoEquipe3[3].split(":");
+            String[] perso23 = tabInfoEquipe3[4].split(":");
+            quetcherbackEquipe3 = getCoo(perso03);
+            lanceur1Equipe3 = getCoo(perso13);
+            lanceur2Equipe3 = getCoo(perso23);
+            equipeEnnemi3="Equipe 3";
+       }
+       
+       /*AFFICHAGE*/
+        System.out.println();
+        System.out.println("Liste équipes ennemies");
+        System.out.println("---------------------");
+        System.out.println("num équipe : "+equipeEnnemi0+"\ncoo de quetcherback : "+quetcherbackEquipe0+"\ncoo de lanceur1 : "+lanceur1Equipe0+"\ncoo de lanceur2 : "+lanceur2Equipe0);
+        
+        System.out.println("---------------------");
+        System.out.println("num équipe : "+equipeEnnemi1+"\ncoo de quetcherback : "+quetcherbackEquipe1+"\ncoo de lanceur1 : "+lanceur1Equipe1+"\ncoo de lanceur2 : "+lanceur2Equipe1);
+        System.out.println("---------------------");
+        System.out.println("num équipe : "+equipeEnnemi2+"\ncoo de quetcherback : "+quetcherbackEquipe2+"\ncoo de lanceur1 : "+lanceur1Equipe2+"\ncoo de lanceur2 : "+lanceur2Equipe2);
+        System.out.println("---------------------");
+        System.out.println("num équipe : "+equipeEnnemi3+"\ncoo de quetcherback : "+quetcherbackEquipe3+"\ncoo de lanceur1 : "+lanceur1Equipe3+"\ncoo de lanceur2 : "+lanceur2Equipe3);
+        
+        System.out.println();
+    }
+    
 }
