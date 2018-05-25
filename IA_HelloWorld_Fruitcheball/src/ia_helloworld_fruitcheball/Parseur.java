@@ -25,6 +25,7 @@ public class Parseur {
     private String infoEquipe1;
     private String infoEquipe2;
     private String infoEquipe3;
+    private String infoNotreEquipe; 
     
     private int nbCase;
     
@@ -67,13 +68,14 @@ public class Parseur {
         infoEquipe1 = splitRes[4];
         infoEquipe2 = splitRes[5];
         infoEquipe3 = splitRes[6];
-        /*
-        switch (splitRes[0]){
+        
+        /*switch (splitRes[0]){
             case "0" : infoNotreEquipe = splitRes[3];
             case "1" : infoNotreEquipe = splitRes[4];
             case "2" : infoNotreEquipe = splitRes[5];
             case "3" : infoNotreEquipe = splitRes[6];
-        }*/
+        }
+      getCooNosPerso(); */
 
     }
     
@@ -110,12 +112,52 @@ public class Parseur {
     }
     
     public void getCooNosPerso(){
+        String numEquipe = splitRes[0];
         
+        if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe0 = infoEquipe0.split(",");
+            String[] perso0 = tabInfoEquipe0[2].split(":");
+            String[] perso1 = tabInfoEquipe0[3].split(":");
+            String[] perso2 = tabInfoEquipe0[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            
+        }else if(splitRes[0].equals("1")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] perso0 = tabInfoEquipe1[2].split(":");
+            String[] perso1 = tabInfoEquipe1[3].split(":");
+            String[] perso2 = tabInfoEquipe1[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            
+        }else if(splitRes[0].equals("2")){
+            
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] perso0 = tabInfoEquipe2[2].split(":");
+            String[] perso1 = tabInfoEquipe2[3].split(":");
+            String[] perso2 = tabInfoEquipe2[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            
+        }else if(splitRes[0].equals("3")){
+            String[] tabInfoEquipe3 = infoEquipe3.split(",");
+            String[] perso0 = tabInfoEquipe3[2].split(":");
+            String[] perso1 = tabInfoEquipe3[3].split(":");
+            String[] perso2 = tabInfoEquipe3[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+        }
         
-        String[] tabInfoEquipe0 = infoEquipe0.split(",");
-        String[] perso0 = tabInfoEquipe0[2].split(":");
-        quetcherback = getCoo(perso0);
-        System.out.println("coo de quetcherback : "+quetcherback);
+        System.out.println("num équipe : "+numEquipe+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
+       
+    }
+    
+    public void getPosEnnemi(String numEquipe){
+        numEquipe=splitRes[0] ; 
     }
     
     private String getCoo(String[] infoPerso){

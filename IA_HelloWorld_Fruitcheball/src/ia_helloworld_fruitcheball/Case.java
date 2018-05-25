@@ -23,7 +23,7 @@ public abstract class Case {
       this.carte = carte; 
       this.colonne = colonne;
       this.ligne = ligne; 
-      this.personne_sur_carte = null ; 
+      this.personne_sur_case = null ; 
       this.fruit_sur_case = null ; 
       
     }
@@ -75,7 +75,7 @@ public abstract class Case {
     }
     
     public void setPeronneCase(Personnage p ){
-       this.personne_sur_carte = p ;  
+       this.personne_sur_case = p ;  
     }
     
     public String toString(){
