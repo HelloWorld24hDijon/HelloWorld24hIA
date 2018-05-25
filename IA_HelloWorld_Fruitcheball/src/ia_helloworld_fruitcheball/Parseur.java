@@ -18,9 +18,19 @@ public class Parseur {
     private String input; //fichier envoyé par le serveur
     private String[] splitRes;
     private String[] tabCarte;
+    
+                                //Nos troupes
     private String quetcherback;
     private String lanceur1;
     private String lanceur2;
+    private String qFruit; //fruit dans inventaire
+    private String l1Fruit;
+    private String l2Fruit;
+                                //Troupes ennemies
+    private String quetcherbackEnnemi;
+    private String lanceur1Ennemi;
+    private String lanceur2Ennemi;
+    
     private String infoEquipe0;
     private String infoEquipe1;
     private String infoEquipe2;
@@ -71,14 +81,7 @@ public class Parseur {
         infoEquipe1 = splitRes[4];
         infoEquipe2 = splitRes[5];
         infoEquipe3 = splitRes[6];
-        
-        /*switch (splitRes[0]){
-            case "0" : infoNotreEquipe = splitRes[3];
-            case "1" : infoNotreEquipe = splitRes[4];
-            case "2" : infoNotreEquipe = splitRes[5];
-            case "3" : infoNotreEquipe = splitRes[6];
-        }
-      getCooNosPerso(); */
+      
 
     }
     
@@ -125,6 +128,9 @@ public class Parseur {
             quetcherback = getCoo(perso0);
             lanceur1 = getCoo(perso1);
             lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
             
         }else if(splitRes[0].equals("1")){
             String[] tabInfoEquipe1 = infoEquipe1.split(",");
@@ -155,7 +161,7 @@ public class Parseur {
             lanceur2 = getCoo(perso2);
         }
         
-        System.out.println("num équipe : "+numEquipe+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
+        System.out.println("num équipe : "+numEquipe+"\ncoo de quetcherback : "+quetcherback+" possède : "+getFruit(qFruit)+"\ncoo de lanceur1 : "+lanceur1+" possède : "+getFruit(l1Fruit)+"\ncoo de lanceur2 : "+lanceur2+" possède : "+getFruit(l2Fruit));
        
     }
     
@@ -202,11 +208,56 @@ public class Parseur {
        
     }
     
+    /**
+     * Corespond au fruit présent dans l'inventaire de chaque personnage
+     */
+    public String getFruitInventairePerso(String[] coo){
+        return coo[3];
+    }
+    
+    
     public void getPosEnnemi(){
-        String numEquipe=splitRes[0] ; 
+        String numEquipe=splitRes[0];
+      
+       /*if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] perso0 = tabInfoEquipe1[2].split(":");
+            String[] perso1 = tabInfoEquipe1[3].split(":");
+            String[] perso2 = tabInfoEquipe1[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            String equipeEnnemi1="Equipe 1";
+            
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] perso02 = tabInfoEquipe2[2].split(":");
+            String[] perso12 = tabInfoEquipe2[3].split(":");
+            String[] perso22 = tabInfoEquipe2[4].split(":");
+            quetcherback = getCoo(perso02);
+            lanceur1 = getCoo(perso12);
+            lanceur2 = getCoo(perso22);
+            String equipeEnnemi2="Equipe 2";
+       }
+        System.out.println("num équipe : "+equipeEnnemi1+"\ncoo de quetcherback : "+quetcherback+"\ncoo de lanceur1 : "+lanceur1+"\ncoo de lanceur2 : "+lanceur2);
+    */
     }
     
     private String getCoo(String[] coo){
         return coo[1]+"/"+coo[2];
+    }
+    
+    private String getFruit(String fruit){
+        String _fruit="";
+        
+        switch(fruit){
+            case "x" : _fruit="rien";break;
+            case "0" : _fruit="Mirabelle";break;
+            case "1" : _fruit="Prune";break;
+            case "2" : _fruit="Cerise";break;
+            case "3" : _fruit="Framboise";break;
+            case "4" : _fruit="Chataigne";break;
+        }
+        
+        return _fruit;
     }
 }

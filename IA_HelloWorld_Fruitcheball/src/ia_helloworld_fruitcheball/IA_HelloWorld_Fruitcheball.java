@@ -34,6 +34,7 @@ public class IA_HelloWorld_Fruitcheball {
         p.creer_carte();
         p.getCooNosPerso();
         p.getNotreZone();
+        p.getPosEnnemi();
         /*
         InetAddress adresseIP;
         
