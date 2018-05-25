@@ -18,5 +18,6 @@ public abstract class Fruit {
         
     }
     
+    
     public abstract Type_Fruit getType(); 
 }
