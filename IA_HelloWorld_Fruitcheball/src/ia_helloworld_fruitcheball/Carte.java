@@ -24,6 +24,10 @@ public class Carte {
         graphe_simple= null; 
     }
     
+    public void addCase(Case _c) {
+        listeCase.add(_c);
+    }
+    
     /*METHODES*/
     //Renvoie la liste des cases
     public ArrayList<Case> getListeCase() {
