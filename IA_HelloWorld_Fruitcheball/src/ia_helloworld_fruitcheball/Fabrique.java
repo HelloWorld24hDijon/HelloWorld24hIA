@@ -38,6 +38,7 @@ public class Fabrique {
      * @param carte
      * @return 
      */
+    :*
     public static Case creer_case(Type_Case type, int ligne, int colonne, Carte carte){
         Case nouvelleCase = null;
         
