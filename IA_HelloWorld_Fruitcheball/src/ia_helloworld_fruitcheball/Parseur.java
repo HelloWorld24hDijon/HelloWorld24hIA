@@ -206,7 +206,7 @@ public class Parseur {
         String numEquipe=splitRes[0] ; 
     }
     
-    private String getCoo(String[] infoPerso){
-        return infoPerso[1]+"/"+infoPerso[2];
+    private String getCoo(String[] coo){
+        return coo[1]+"/"+coo[2];
     }
 }
