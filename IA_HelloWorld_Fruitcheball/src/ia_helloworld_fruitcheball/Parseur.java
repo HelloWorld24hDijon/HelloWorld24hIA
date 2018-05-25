@@ -16,6 +16,10 @@ public class Parseur {
     private final String adresseFichier;
     private Carte carte;
     private String input; //fichier envoyé par le serveur
+    private String[] splitRes;
+    
+    private int nbCase;
+    
     
     
     /*CONSTRUCTEUR*/
@@ -62,7 +66,22 @@ public class Parseur {
         }
     }
     
-    public void decoupeString(String texte){
+    /**
+     * découpe ma chaine de caractères en trois parties
+     */
+    public void decoupeString(){
+                                    //Différentes parties du code
+        String[] tailleTableau;
+        String[] infoEquipe;
+        
+        //Récupère toutes les grandes parties du fichier séparées par "_"
+        this.splitRes=input.split("_");
+        
+        //Sépare la troisième partie par les "," 
+        tailleTableau= this.splitRes[2].split(",");
+        
+        /*Récupère les équiques*/
+        infoEquipe= this.splitRes[3].split(",");
         
     }
 }
