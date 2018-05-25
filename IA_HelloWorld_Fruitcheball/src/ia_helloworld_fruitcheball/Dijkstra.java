@@ -5,13 +5,15 @@
  */
 package cryptofthejavadancer.Model.Carte.Graphes.Algorithmes;
 
-import cryptofthejavadancer.Model.Carte.Cases.Case;
+//import cryptofthejavadancer.Model.Carte.Cases;
 import cryptofthejavadancer.Model.Carte.Graphes.Graph;
 import cryptofthejavadancer.Model.Carte.Graphes.Vertex;
 import cryptofthejavadancer.Model.Carte.Map;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
+
 
 /**
  *
