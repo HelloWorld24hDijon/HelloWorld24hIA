@@ -10,16 +10,20 @@ package ia_helloworld_fruitcheball;
  * @author Alexiane
  */
 public abstract class Case {
-     private int ligne ; 
+    
+    //Atribut//
+    private int ligne ; 
     private int colonne ; 
     private Carte carte; 
     
+    //Constructeur// 
     public Case (int ligne, int colonne, Carte carte ) {
       this.carte = carte; 
       this.colonne = colonne;
       this.ligne = ligne; 
     }
     
+    //Retourne la ligne de la case//
     public int getLigne() {
         return ligne;
     }
@@ -45,7 +49,7 @@ public abstract class Case {
     }
    
        
-    public abstract TypeCase getType(); 
+    public abstract Type_Case getType(); 
         
     public String toString(){
         return ""; 
