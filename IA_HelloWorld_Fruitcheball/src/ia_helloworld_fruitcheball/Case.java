@@ -71,7 +71,7 @@ public abstract class Case {
     } 
     
     public Personnage getPersonneCase (){
-        return personne_sur_carte ; 
+        return personne_sur_case ; 
     }
     
     public void setPeronneCase(Personnage p ){
