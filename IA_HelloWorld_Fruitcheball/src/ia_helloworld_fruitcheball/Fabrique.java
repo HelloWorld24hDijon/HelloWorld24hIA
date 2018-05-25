@@ -43,8 +43,7 @@ public class Fabrique {
         
         switch(type){
             case cloture : nouvelleCase= new Case_Cloture(ligne,colonne,carte);break;
-            case sol : nouvelleCase = new Case_Sol(ligne,colonne,carte);break;
-            case zoneEquipe : nouvelleCase = new Case_ZoneEquipe(ligne,colonne,carte);break;
+            case sol : nouvelleCase = new Case_Sol(ligne,colonne,carte);break;            
         }
         return nouvelleCase;
     }
