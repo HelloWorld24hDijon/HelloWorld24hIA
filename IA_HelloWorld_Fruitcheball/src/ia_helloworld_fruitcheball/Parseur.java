@@ -47,9 +47,9 @@ public class Parseur {
            
             //créer les cases sol et cloture
             switch(c){
-                case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,numColonne,numLigne,this.map)
+                case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,numColonne,numLigne,this.carte)
                 ;break;
-                case '.' : nouvelleCase = Fabrique.creer_case(Type_Case.sol,numColonne,numLigne,this.map)
+                case '.' : nouvelleCase = Fabrique.creer_case(Type_Case.sol,numColonne,numLigne,this.carte)
                 ;break;    
                 
             }
@@ -73,12 +73,18 @@ public class Parseur {
                                     //Différentes parties du code
         String[] tailleTableau;
         String[] infoEquipe;
+        String[] grilleCarte;
         
         //Récupère toutes les grandes parties du fichier séparées par "_"
         this.splitRes=input.split("_");
         
-        //Sépare la troisième partie par les "," 
+        //taille tableau récu^père la taille du tableau et les différentes lignes composant la map
         tailleTableau= this.splitRes[2].split(",");
+        
+        for(int i=1;i<=tailleTableau.length;i++){
+            
+        }
+        
         
         /*Récupère les équiques*/
         infoEquipe= this.splitRes[3].split(",");
