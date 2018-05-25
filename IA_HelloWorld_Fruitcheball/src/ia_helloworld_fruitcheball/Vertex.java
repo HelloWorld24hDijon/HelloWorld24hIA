@@ -18,6 +18,14 @@ public class Vertex {
     private final Graph graph;
     private final int line;
     private final int column;
+
+    public int getLine() {
+        return line;
+    }
+
+    public int getColumn() {
+        return column;
+    }
     
     public Vertex(Graph g, int line, int column) {
         neighbours = new ArrayList();
