@@ -32,7 +32,6 @@ public class IA_HelloWorld_Fruitcheball {
         Carte c = new Carte();
         Parseur p = new Parseur("", c);
         p.creer_carte();
-        /*
         InetAddress adresseIP;
         
         try{            
@@ -92,61 +91,37 @@ public class IA_HelloWorld_Fruitcheball {
             java.net.Socket s = new java.net.Socket(adresseIP,1337);             
             
             //PARTIE TRAITEMENT DU SOCKET ET ENVOI DES DONNEES
-            PrintStream p = new PrintStream(s.getOutputStream());
-            
+            PrintStream ps = new PrintStream(s.getOutputStream());            
             InputStream is = s.getInputStream();
             InputStreamReader ir = new InputStreamReader(is);
             BufferedReader rd = new BufferedReader(ir);
                         
             //DEFINE PLAYER INSTRUCTION HERE
-            p.println("Hello World");
+            ps.println("Hello World");
             String msgSrv = rd.readLine();
             System.out.println("first :" + msgSrv);
-
-            Thread envoyer = new Thread(new Runnable() {
-                String msgClient;
-                
-                @Override
-                public void run() {
-                    while(true) {
-                        msgClient = "S-S-E";
-                        p.println(msgClient);
-                        System.out.println(">> envoie >>" + msgClient);
-                        p.flush();
-                    }
-                }
-            });
-            envoyer.start();
             
-            Thread recevoir = new Thread(new Runnable() {
-                String msgSrv;                
-                int iteration;
-                
-                @Override
-                public void run() {
-                    try {
-                        msgSrv = rd.readLine();
-                        while(true) {           
-                            msgSrv = rd.readLine();
-                            if(msgSrv.equals("FIN")) {
-                                break;
-                            }
-                            System.out.println("*** iteration "+iteration+" ***");
-                            System.out.println("<< recoit <<" + msgSrv);
-                            
-                            iteration++;
-                        }
-                    } catch (IOException ex) {
-                        Logger.getLogger(IA_HelloWorld_Fruitcheball.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+            int iteration = 0;
+
+            while(!msgSrv.equals("FIN")){
+                if(msgSrv.equals("FIN")){
+                    break;
                 }
-            });
-            recevoir.start();
+                msgSrv = rd.readLine();
+                System.out.println("*** iteration " +iteration+" ***");
+                System.out.println("<< recoit <<" + msgSrv);
+                String msgClient = "S-S-E";
+                ps.println(msgClient);
+                System.out.println(">> envoie >>" + msgClient);
+                ps.flush();
+                iteration++;
+            }
+            System.out.println("Server disconnected");
         }catch (UnknownHostException ex){
             ex.printStackTrace();
         }catch (IOException ex){
             ex.printStackTrace();
-        }*/
+        }
     }
     
 }
