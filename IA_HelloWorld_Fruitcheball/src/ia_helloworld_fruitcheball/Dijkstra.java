@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cryptofthejavadancer.Model.Carte.Graphes.Algorithmes;
+package ia_helloworld_fruitcheball;
 
-import cryptofthejavadancer.Model.Carte.Cases.Case;
-import cryptofthejavadancer.Model.Carte.Graphes.Graph;
-import cryptofthejavadancer.Model.Carte.Graphes.Vertex;
-import cryptofthejavadancer.Model.Carte.Map;
+//import cryptofthejavadancer.Model.Carte.Cases;
+import ia_helloworld_fruitcheball.Graph;
+import ia_helloworld_fruitcheball.Vertex;
+import ia_helloworld_fruitcheball.Carte;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
+
 
 /**
  *
@@ -22,7 +24,7 @@ public class Dijkstra {
     private Graph graph;
     private Vertex start;
     private Vertex end;
-    private Map map;
+    private Carte map;
     private HashMap<Vertex,Integer> distance;
     private HashMap<Vertex,Boolean> seen;
     private HashMap<Vertex,Vertex> predecessor;
