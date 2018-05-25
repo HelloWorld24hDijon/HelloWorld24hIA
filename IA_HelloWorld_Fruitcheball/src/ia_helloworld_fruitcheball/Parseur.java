@@ -39,7 +39,7 @@ public class Parseur {
             Case nouvelleCase=null;
             
            
-            //créer les cases sol et cloture
+            //créer les cases sol, cloture et zone d'équipes
             switch(c){
                 case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,numColonne,numLigne,this.map)
                 );break;
@@ -49,6 +49,14 @@ public class Parseur {
                 );break;  
             }
             
+            //gestion des différents fruits
+             switch(c){
+                 case '0' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Mirabelle());break;
+                 case '1' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Prune());break;
+                 case '2' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Cerise());break;
+                 case '3' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Framboise());break;
+                 case '4' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Chataigne());break;
+             }
             
         }
     }
