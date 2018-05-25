@@ -73,10 +73,7 @@ public abstract class Case {
         return personne_sur_case ; 
     }
     
-<<<<<<< HEAD
-    public void setPeronneCase(Personnage p ){
-       this.personne_sur_case = p ;  
-=======
+
     public void ajoutePersonnage(Personnage p ){
         personne_sur_case= p ; 
     }
@@ -92,7 +89,6 @@ public abstract class Case {
     
     public void supprimeFruit(Fruit f){
         fruit_sur_case = null;
->>>>>>> dbf5304b8933a5b21181a16cb90046b0b02ac93d
     }
     
     public String toString(){
