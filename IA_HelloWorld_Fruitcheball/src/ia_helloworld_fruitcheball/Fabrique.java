@@ -13,19 +13,20 @@ public class Fabrique {
     
     /*ATTRIBUTS*/
     private static Fabrique instance;
+    private static Carte carte;
     
     /*CONSTRUCTEUR*/
-    private Fabrique(){
-        
+    private Fabrique(Carte _carte){
+        carte = _carte;
     }
     /*METHODES*/
     /**
      * 
      * @return la nouvelle instance créée
      */
-    public static Fabrique get(){
+    public static Fabrique get(Carte _carte){
         if(instance==null){
-            instance=new Fabrique();
+            instance=new Fabrique(_carte);
         }
         return instance;
     }
@@ -45,6 +46,7 @@ public class Fabrique {
             case cloture : nouvelleCase= new Case_Cloture(ligne,colonne,carte);break;
             case sol : nouvelleCase = new Case_Sol(ligne,colonne,carte);break;            
         }
+        carte.addCase(nouvelleCase);
         return nouvelleCase;
     }
 }

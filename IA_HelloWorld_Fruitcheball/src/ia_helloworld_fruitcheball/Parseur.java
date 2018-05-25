@@ -17,6 +17,7 @@ public class Parseur {
     private Carte carte;
     private String input; //fichier envoyé par le serveur
     private String[] splitRes;
+    private String[] tabCarte;
     
     private int nbCase;
     
@@ -35,43 +36,19 @@ public class Parseur {
      * @return LA CARTE
      */
     public Carte creer_carte(){
+        decoupeString();
+        creationCarte();
+        for(Case c : carte.getListeCase()){
+            System.out.println(c.toString());
+        }
         return carte;
     }
-    
-    public void compteLigne(int numLigne, String ligne){
-        for(int numColonne=0; numColonne<ligne.length();numColonne++){
-            char c = ligne.charAt(numColonne);
-            
-            Case nouvelleCase=null;
-            
-           
-            //créer les cases sol et cloture
-            switch(c){
-                case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,numColonne,numLigne,this.carte)
-                ;break;
-                case '.' : nouvelleCase = Fabrique.creer_case(Type_Case.sol,numColonne,numLigne,this.carte)
-                ;break;    
-                
-            }
-            
-            //gestion des différents fruits
-             switch(c){
-                 case '0' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Mirabelle());break;
-                 case '1' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Prune());break;
-                 case '2' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Cerise());break;
-                 case '3' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Framboise());break;
-                 case '4' : this.carte.ajouteFruit(numLigne,numColonne, new Fruit_Chataigne());break;
-             }
-            
-        }
-    }
-    
+
     /**
      * découpe ma chaine de caractères en trois parties
      */
     public void decoupeString(){
-                                    //Différentes parties du code
-        String[] tailleTableau;
+                                    //Différentes parties du code      
         String[] infoEquipe;
         String[] grilleCarte;
         
@@ -79,15 +56,42 @@ public class Parseur {
         this.splitRes=input.split("_");
         
         //taille tableau récu^père la taille du tableau et les différentes lignes composant la map
-        tailleTableau= this.splitRes[2].split(",");
-        
-        for(int i=1;i<=tailleTableau.length;i++){
-            
-        }
-        
+        tabCarte= this.splitRes[2].split(",");
         
         /*Récupère les équiques*/
         infoEquipe= this.splitRes[3].split(",");
         
+    }
+    
+    public void creationCarte() {
+        
+        for(int i=1;i<=tabCarte.length-1;i++){
+            char[] ligne = tabCarte[i].toCharArray();
+            for(int numColonne=0; numColonne<ligne.length;numColonne++){
+                char c = ligne[numColonne];
+                
+                Case nouvelleCase=null;
+                
+                //créer les cases sol et cloture
+                switch(c){
+                    case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,i-1,numColonne,this.carte)
+                    ;break;
+                    case '.' : nouvelleCase = Fabrique.creer_case(Type_Case.sol,i-1,numColonne,this.carte)
+                    ;break;    
+
+                }
+                /*
+                //gestion des différents fruits
+                 switch(c){
+                     case '0' : this.carte.ajouteFruit(i,numColonne, new Fruit_Mirabelle());break;
+                     case '1' : this.carte.ajouteFruit(i,numColonne, new Fruit_Prune());break;
+                     case '2' : this.carte.ajouteFruit(i,numColonne, new Fruit_Cerise());break;
+                     case '3' : this.carte.ajouteFruit(i,numColonne, new Fruit_Framboise());break;
+                     case '4' : this.carte.ajouteFruit(i,numColonne, new Fruit_Chataigne());break;
+                }*/
+            
+            }
+        
+        }
     }
 }

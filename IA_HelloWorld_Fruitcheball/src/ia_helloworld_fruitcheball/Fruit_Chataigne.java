@@ -9,6 +9,14 @@ package ia_helloworld_fruitcheball;
  *
  * @author Alexiane
  */
-public class Fruit_Chataigne {
+public class Fruit_Chataigne extends Fruit {
+
+    public Fruit_Chataigne(Case ca) {
+        super (ca) ; 
+    }
+    @Override
+    public Type_Fruit getType() {
+        return Type_Fruit.chataigne ; 
+    }
     
 }
