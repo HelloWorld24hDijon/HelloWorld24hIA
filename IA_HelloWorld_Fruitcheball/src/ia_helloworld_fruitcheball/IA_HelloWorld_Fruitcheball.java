@@ -38,8 +38,16 @@ public class IA_HelloWorld_Fruitcheball {
         Graph g = new Graph(c);
         c.getGraph(g);
         c.genererGrapheSimple();
-
         
+        //System.out.println(g.getVertex("1/1"));
+        
+        Dijkstra d = new Dijkstra(g);
+        
+        d.calcul(g.getVertex("1/1"), g.getVertex("3/3"));
+
+        for(Vertex v : d.getPath()) {
+                System.out.println(v.getCoordinates());
+            }
 
         /*
         InetAddress adresseIP;

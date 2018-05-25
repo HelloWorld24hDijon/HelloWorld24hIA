@@ -11,4 +11,14 @@ package ia_helloworld_fruitcheball;
  */
 public class IA {
     
+    private Carte carte;
+    private Graph graph;
+    private Parseur parseur;
+    
+    public IA(Carte _c, Graph _g, Parseur _p){
+        carte = _c;
+        graph = _g;
+        parseur = _p;
+    }
+    
 }
