@@ -14,12 +14,12 @@ import java.util.ArrayList;
 public class Carte {
     /*ATTRIBUTS*/
     private ArrayList<Case> listeCase;
-    private Graphe graphe_simple;
+    private Graph graphe_simple;
     
     /*CONSTRUCTEUR*/
     public Carte(){
         this.listeCase = new ArrayList();
-        graphe_simple= new Graphe();
+        graphe_simple= new Graph();
     }
     
     /*METHODES*/
