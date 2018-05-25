@@ -127,6 +127,9 @@ public class Parseur {
         }
     }
     
+    /**************************************************NOTRE EQUIPE*/
+    
+    // Retourne les coordonnées de nos personnages
     public void getCooNosPerso(){
         String numEquipe = splitRes[0];
         
@@ -184,6 +187,7 @@ public class Parseur {
        
     }
     
+    //Retourne la zone de notre camp
     public void getNotreZone(){
         String numEquipe=splitRes[0] ; 
         
@@ -228,7 +232,7 @@ public class Parseur {
     }
     
     /**
-     * Corespond au fruit présent dans l'inventaire de chaque personnage
+     * Correspond au fruit présent dans l'inventaire de chaque personnage
      */
     public String getFruitInventairePerso(String[] coo){
         return coo[3];
@@ -238,6 +242,8 @@ public class Parseur {
     public void getPosEnnemi(){
         String numEquipe=splitRes[0];
       
+        //if(equipeEnnemi.get())
+        
        /*if (splitRes[0].equals("0")){
             String[] tabInfoEquipe1 = infoEquipe1.split(",");
             String[] perso0 = tabInfoEquipe1[2].split(":");
