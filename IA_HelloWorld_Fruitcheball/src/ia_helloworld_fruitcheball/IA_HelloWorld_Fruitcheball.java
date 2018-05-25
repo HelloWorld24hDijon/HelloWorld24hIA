@@ -29,6 +29,10 @@ public class IA_HelloWorld_Fruitcheball {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        Carte c = new Carte();
+        Parseur p = new Parseur("", c);
+        p.creer_carte();
+        /*
         InetAddress adresseIP;
         
         try{            
@@ -142,7 +146,7 @@ public class IA_HelloWorld_Fruitcheball {
             ex.printStackTrace();
         }catch (IOException ex){
             ex.printStackTrace();
-        }
+        }*/
     }
     
 }

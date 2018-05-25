@@ -15,12 +15,17 @@ public abstract class Case {
     private int ligne ; 
     private int colonne ; 
     private Carte carte; 
+    private Personnage personne_sur_case ; 
+    private Fruit fruit_sur_case ; 
     
     //Constructeur// 
     public Case (int ligne, int colonne, Carte carte ) {
       this.carte = carte; 
       this.colonne = colonne;
       this.ligne = ligne; 
+      this.personne_sur_case = null ; 
+      this.fruit_sur_case = null ; 
+      
     }
     
     //Retourne la ligne de la case//
@@ -56,7 +61,24 @@ public abstract class Case {
        
     public abstract Type_Case getType(); 
         
+    public abstract boolean franchissable();
+    
+    public Fruit getFruitCase(){
+      return fruit_sur_case ;   
+    }
+    public void setFruitCase(Fruit f ){
+        this.fruit_sur_case = f ;
+    } 
+    
+    public Personnage getPersonneCase (){
+        return personne_sur_carte ; 
+    }
+    
+    public void setPeronneCase(Personnage p ){
+       this.personne_sur_case = p ;  
+    }
+    
     public String toString(){
-        return ""; 
+        return ligne+"/"+colonne; 
     }
 }
