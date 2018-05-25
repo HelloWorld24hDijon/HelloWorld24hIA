@@ -22,6 +22,8 @@ public class Parseur {
     private String[] splitRes;
     private String[] tabCarte;
     private ArrayList<Case> tabCooCasesFruits;
+
+    
     
                                 //Nos troupes
     private String quetcherback;
@@ -238,6 +240,59 @@ public class Parseur {
         return coo[3];
     }
     
+    //Fruit que possède notre équipe
+    public void getFruitPossede(){
+        if (splitRes[0].equals("0")){
+            String[] tabInfoEquipe0 = infoEquipe0.split(",");
+            String[] perso0 = tabInfoEquipe0[2].split(":");
+            String[] perso1 = tabInfoEquipe0[3].split(":");
+            String[] perso2 = tabInfoEquipe0[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
+            
+        }else if(splitRes[0].equals("1")){
+            String[] tabInfoEquipe1 = infoEquipe1.split(",");
+            String[] perso0 = tabInfoEquipe1[2].split(":");
+            String[] perso1 = tabInfoEquipe1[3].split(":");
+            String[] perso2 = tabInfoEquipe1[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
+            
+        }else if(splitRes[0].equals("2")){
+            
+            String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] perso0 = tabInfoEquipe2[2].split(":");
+            String[] perso1 = tabInfoEquipe2[3].split(":");
+            String[] perso2 = tabInfoEquipe2[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
+            
+        }else if(splitRes[0].equals("3")){
+            String[] tabInfoEquipe3 = infoEquipe3.split(",");
+            String[] perso0 = tabInfoEquipe3[2].split(":");
+            String[] perso1 = tabInfoEquipe3[3].split(":");
+            String[] perso2 = tabInfoEquipe3[4].split(":");
+            quetcherback = getCoo(perso0);
+            lanceur1 = getCoo(perso1);
+            lanceur2 = getCoo(perso2);
+            qFruit=getFruitInventairePerso(perso0);
+            l1Fruit=getFruitInventairePerso(perso1);
+            l2Fruit=getFruitInventairePerso(perso2);
+        }
+    }
+    
     
     public void getPosEnnemi(){
         String numEquipe=splitRes[0];
@@ -284,5 +339,9 @@ public class Parseur {
         }
         
         return _fruit;
+    }
+    
+    public ArrayList<Case> getTabCooCasesFruits() {
+        return tabCooCasesFruits;
     }
 }
