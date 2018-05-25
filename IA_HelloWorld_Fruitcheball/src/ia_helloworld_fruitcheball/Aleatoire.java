@@ -5,6 +5,7 @@
  */
 package ia_helloworld_fruitcheball;
 
+import java.util.Random;
 import static jdk.nashorn.internal.objects.NativeMath.random;
 
 /**
@@ -18,42 +19,45 @@ public class Aleatoire {
     }
     
     
-    public void aleatoire(){
-        String s =""; 
-        int i = (int) random(6);
-        
+    public String aleatoire(){
+        String s ="";
+        Random rand = new Random();
+        int i = rand.nextInt(6) + 0;
         switch(i){
-            case 0 : s="N";
-            case 1 : s="S"; 
-            case 2 : s="E"; 
-            case 3: s="O"; 
-            case 4 : s="X"; 
-            case 5 : s="P" ; 
-            default : s+="-";break;
+            case 0 : s="N"; break;
+            case 1 : s="S"; break;
+            case 2 : s="E"; break;
+            case 3: s="O"; break;
+            case 4 : s="X"; break;
+            case 5 : s="P" ; break;
             
         }
         
+        i = rand.nextInt(6) + 0;
+        s+="-";
+        
          switch(i){
-            case 0 : s="N";
-            case 1 : s="S"; 
-            case 2 : s="E"; 
-            case 3: s="O"; 
-            case 4 : s="X"; 
-            case 5 : s="P" ; 
-            default : s+="-";break;
+            case 0 : s+="N";break;
+            case 1 : s+="S"; break;
+            case 2 : s+="E"; break;
+            case 3: s+="O"; break;
+            case 4 : s+="X"; break;
+            case 5 : s+="P" ; break;
          }
          
+         i = rand.nextInt(6) + 0;
+         s+="-";
+         
          switch(i){
-            case 0 : s="N";
-            case 1 : s="S"; 
-            case 2 : s="E"; 
-            case 3: s="O"; 
-            case 4 : s="X"; 
-            case 5 : s="P" ; 
-            default : s+="\n";break;
+            case 0 : s+="N";break;
+            case 1 : s+="S"; break;
+            case 2 : s+="E"; break;
+            case 3: s+="O"; break;
+            case 4 : s+="X"; break;
+            case 5 : s+="P" ; break;
         }
         
-        
+        return s+="\n";
     }
     
     

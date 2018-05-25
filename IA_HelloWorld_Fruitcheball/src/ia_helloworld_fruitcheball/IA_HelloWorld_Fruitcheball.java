@@ -111,7 +111,7 @@ public class IA_HelloWorld_Fruitcheball {
                 System.out.println("<< recoit <<" + msgSrv);
                 
                 
-                
+                /*
                 Carte c = new Carte();
                 Parseur p = new Parseur(msgSrv, c);
                 p.creer_carte();
@@ -126,11 +126,11 @@ public class IA_HelloWorld_Fruitcheball {
                 p.getScoreNotreEquipe();
 
                 IA ia = new IA(c, g, p);
-                System.out.println(ia.ordresPersos());
+                System.out.println(ia.ordresPersos());*/
                 
                 
-
-                String msgClient = ia.ordresPersos();
+                Aleatoire alea = new Aleatoire();
+                String msgClient = alea.aleatoire();
                 ps.println(msgClient);
                 System.out.println(">> envoie >>" + msgClient);
                 ps.flush();
