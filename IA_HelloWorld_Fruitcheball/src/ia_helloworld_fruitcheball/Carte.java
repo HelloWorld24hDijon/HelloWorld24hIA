@@ -15,12 +15,13 @@ public class Carte {
     /*ATTRIBUTS*/
     private ArrayList<Case> listeCase;
     private Graph graphe_simple;
+    private Carte m ; 
     
     
     /*CONSTRUCTEUR*/
-    public Carte(){
+    public Carte(Carte m ){
         this.listeCase = new ArrayList();
-        this.graphe_simple= new Graph();
+        this.graphe_simple= new Graph(m) ; 
     }
     
     /*METHODES*/
@@ -31,12 +32,12 @@ public class Carte {
     
      private void genererGrapheSimple(){
        for ( Case c : getListeCase()){
-           graphe_simple.addVertex(/*a trouver */);
+           graphe_simple.addVertex(c.toString());
        }
        
        for ( Case c : getListeCase()){
             for ( Case c1 : getListeCase()){
-                 if (Math.abs((c.getLigne()-c1.getLigne())+(c.getColonne()-c1.getColonne()))==1 && c1.getType()!=Type_Case.MurDur && c1.getType()!=Type_Case.MurIndestructible){
+                 if (Math.abs((c.getLigne()-c1.getLigne())+(c.getColonne()-c1.getColonne()))==1 && c1.getType()!=Type_Case.cloture && c1.getType()!=Type_Case.sol){
                     graphe_simple.addEdge(c.toString(), c1.toString());
                     graphe_simple.setLabel(c.toString(), c1.toString(), 1);
                  }
