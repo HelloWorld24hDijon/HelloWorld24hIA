@@ -44,29 +44,29 @@ public class Carte {
        }
        
        for(Case c : listeCase) {
-            System.out.println("Case : "+c.toString()+" : "+c.getType());
+            //System.out.println("Case : "+c.toString()+" : "+c.getType());
             for(Case c1 : listeCase) {
                 if((Math.abs(c.getLigne()-c1.getLigne())==0)&&
                         (Math.abs(c.getColonne()-c1.getColonne())==1)) {
                     addEdgeAndLabelGraphSimple(c,c1);
-                    System.out.println("        It's coordinates are "+c1.toString());
+                    //System.out.println("        It's coordinates are "+c1.toString());
                 }
                 if(((Math.abs(c.getLigne()-c1.getLigne())==0)&&
                         (Math.abs(c.getColonne()-c1.getColonne())==-1))
                         &&(Math.abs(c.getColonne()-c1.getColonne())>=0)) {
                     addEdgeAndLabelGraphSimple(c,c1);
-                    System.out.println("        It's coordinates are "+c1.toString());
+                    //System.out.println("        It's coordinates are "+c1.toString());
                 }
                 if((Math.abs(c.getLigne()-c1.getLigne())==1)&&
                         (Math.abs(c.getColonne()-c1.getColonne())==0)) {
                     addEdgeAndLabelGraphSimple(c,c1);
-                    System.out.println("        It's coordinates are "+c1.toString());
+                    //System.out.println("        It's coordinates are "+c1.toString());
                 }
                 if(((Math.abs(c.getLigne()-c1.getLigne())==-1)&&
                         (Math.abs(c.getColonne()-c1.getColonne())==0))
                         &&(Math.abs(c.getLigne()-c1.getLigne())>=0)) {
                     addEdgeAndLabelGraphSimple(c,c1);
-                    System.out.println("        It's coordinates are "+c1.toString());
+                    //System.out.println("        It's coordinates are "+c1.toString());
                 }
                 
             }

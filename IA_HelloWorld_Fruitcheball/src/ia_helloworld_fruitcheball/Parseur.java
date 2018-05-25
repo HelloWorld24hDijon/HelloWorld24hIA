@@ -114,41 +114,32 @@ public class Parseur {
                 
                 //créer les cases sol et cloture
                 switch(c){
-                    case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,i-1,numColonne,this.carte)
-                    ;break;
-                    case '.' : nouvelleCase = Fabrique.creer_case(Type_Case.sol,i-1,numColonne,this.carte)
-                    ;break;    
+                    case 'X' : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,i-1,numColonne,this.carte);
+                    break;
+                    default : nouvelleCase = Fabrique.creer_case(Type_Case.cloture,i-1,numColonne,this.carte);
+                    break;
+                    
 
                 }
-                
-
-                //gestion des différents fruits
-                 /*switch(c){
-                     case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
-                     case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
-                     case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
-                     case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
-                     case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
-                }*/
-                 
-                 if((0<=c)&&(c<5)){
-                     tabCooCasesFruits.add(nouvelleCase);
-                 }
-            
-
-                if(nouvelleCase != null){
-                    //gestion des différents fruits
+                           
+                System.out.println("");
                     switch(c){
-                        case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
-                        case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
-                        case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
-                        case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
-                        case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
-                   }
-
-                   if((0<=c)&&(c<5)){
-                       tabCooCasesFruits.add(nouvelleCase);
-                   }
+                        case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));
+                        tabCooCasesFruits.add(nouvelleCase);
+                        break;
+                        case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));
+                        tabCooCasesFruits.add(nouvelleCase);
+                        break;
+                        case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));
+                        tabCooCasesFruits.add(nouvelleCase);
+                        break;
+                        case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));
+                        tabCooCasesFruits.add(nouvelleCase);
+                        break;
+                        case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));
+                        tabCooCasesFruits.add(nouvelleCase);
+                        break;
+                   
                 }            
 
             }

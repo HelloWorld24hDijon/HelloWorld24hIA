@@ -56,7 +56,8 @@ public class IA {
     }
     
     public String ordresPersos(){
-        
+        System.out.println("cooQuetcherback : "+cooQuetcherback);
+        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooQuetcherback)));
         dijkstra.calcul(graph.getVertex(cooQuetcherback), graph.getVertex(caseFruitProche(graph.getVertex(cooQuetcherback))));
         System.out.println("Chemin de Quetcherback :");
         cheminQuetcherback = dijkstra.getPath();
@@ -64,6 +65,8 @@ public class IA {
             System.out.println(v.getCoordinates());
         }
         
+        System.out.println("cooLanceur1 : "+cooLanceur1);
+        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooQuetcherback)));
         dijkstra.calcul(graph.getVertex(cooLanceur1), graph.getVertex(caseFruitProche(graph.getVertex(cooLanceur1))));
         System.out.println("Chemin de Lanceur1 :");
         cheminLanceur1 = cheminLanceur1;
@@ -71,6 +74,8 @@ public class IA {
             System.out.println(v.getCoordinates());
         }
         
+        System.out.println("cooLanceur2 : "+cooLanceur2);
+        System.out.println("fruit plus proche : "+caseFruitProche(graph.getVertex(cooQuetcherback)));
         dijkstra.calcul(graph.getVertex(cooLanceur2), graph.getVertex(caseFruitProche(graph.getVertex(cooLanceur2))));
         System.out.println("Chemin de Lanceur2 :");
         cheminLanceur2 = dijkstra.getPath();
