@@ -111,19 +111,20 @@ public class Parseur {
 
                 }
                 
-                //gestion des différents fruits
-                 switch(c){
-                     case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
-                     case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
-                     case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
-                     case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
-                     case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
-                }
-                 
-                 if((0<=c)&&(c<5)){
-                     tabCooCasesFruits.add(nouvelleCase);
-                 }
-            
+                if(nouvelleCase != null){
+                    //gestion des différents fruits
+                    switch(c){
+                        case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
+                        case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
+                        case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
+                        case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
+                        case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
+                   }
+
+                   if((0<=c)&&(c<5)){
+                       tabCooCasesFruits.add(nouvelleCase);
+                   }
+                }            
             }
    
         
