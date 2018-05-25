@@ -21,4 +21,7 @@ public class IA {
         parseur = _p;
     }
     
+    public Case caseFruitProche(Vertex v ){
+        return null ;
+    }
 }
