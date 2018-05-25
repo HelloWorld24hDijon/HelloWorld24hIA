@@ -27,6 +27,7 @@ public class Parseur {
     
                                 //Nos troupes
     private String quetcherback;
+
     private String lanceur1;
     private String lanceur2;
     private String qFruit; //fruit dans inventaire
@@ -110,19 +111,20 @@ public class Parseur {
 
                 }
                 
-                //gestion des différents fruits
-                 switch(c){
-                     case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
-                     case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
-                     case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
-                     case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
-                     case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
-                }
-                 
-                 if((0<=c)&&(c<5)){
-                     tabCooCasesFruits.add(nouvelleCase);
-                 }
-            
+                if(nouvelleCase != null){
+                    //gestion des différents fruits
+                    switch(c){
+                        case '0' : nouvelleCase.ajouteFruit(new Fruit_Mirabelle(nouvelleCase));break;
+                        case '1' : nouvelleCase.ajouteFruit(new Fruit_Prune(nouvelleCase));break;
+                        case '2' : nouvelleCase.ajouteFruit(new Fruit_Cerise(nouvelleCase));break;
+                        case '3' : nouvelleCase.ajouteFruit(new Fruit_Framboise(nouvelleCase));break;
+                        case '4' : nouvelleCase.ajouteFruit(new Fruit_Chataigne(nouvelleCase));break;
+                   }
+
+                   if((0<=c)&&(c<5)){
+                       tabCooCasesFruits.add(nouvelleCase);
+                   }
+                }            
             }
    
         
@@ -242,54 +244,44 @@ public class Parseur {
     
     //Fruit que possède notre équipe
     public void getFruitPossede(){
+        
         if (splitRes[0].equals("0")){
             String[] tabInfoEquipe0 = infoEquipe0.split(",");
-            String[] perso0 = tabInfoEquipe0[2].split(":");
-            String[] perso1 = tabInfoEquipe0[3].split(":");
-            String[] perso2 = tabInfoEquipe0[4].split(":");
-            quetcherback = getCoo(perso0);
-            lanceur1 = getCoo(perso1);
-            lanceur2 = getCoo(perso2);
-            qFruit=getFruitInventairePerso(perso0);
-            l1Fruit=getFruitInventairePerso(perso1);
-            l2Fruit=getFruitInventairePerso(perso2);
+            String[] Mirabelle = tabInfoEquipe0[11].split(":");
+            String[] Prune = tabInfoEquipe0[12].split(":");
+            
+            
+            String[] Cerise = tabInfoEquipe0[13].split(":");
+            String[] Framboise = tabInfoEquipe0[14].split(":");
+            String[] Chataigne = tabInfoEquipe0[15].split(":");
+            
+            System.out.println("");
+      
             
         }else if(splitRes[0].equals("1")){
             String[] tabInfoEquipe1 = infoEquipe1.split(",");
-            String[] perso0 = tabInfoEquipe1[2].split(":");
-            String[] perso1 = tabInfoEquipe1[3].split(":");
-            String[] perso2 = tabInfoEquipe1[4].split(":");
-            quetcherback = getCoo(perso0);
-            lanceur1 = getCoo(perso1);
-            lanceur2 = getCoo(perso2);
-            qFruit=getFruitInventairePerso(perso0);
-            l1Fruit=getFruitInventairePerso(perso1);
-            l2Fruit=getFruitInventairePerso(perso2);
+            String[] Mirabelle = tabInfoEquipe1[2].split(":");
+            String[] Prune = tabInfoEquipe1[3].split(":");
+            String[] Cerise = tabInfoEquipe1[4].split(":");
+            String[] Framboise = tabInfoEquipe1[4].split(":");
+            String[] Chataigne = tabInfoEquipe1[4].split(":");
             
         }else if(splitRes[0].equals("2")){
             
-            String[] tabInfoEquipe2 = infoEquipe2.split(",");
-            String[] perso0 = tabInfoEquipe2[2].split(":");
-            String[] perso1 = tabInfoEquipe2[3].split(":");
-            String[] perso2 = tabInfoEquipe2[4].split(":");
-            quetcherback = getCoo(perso0);
-            lanceur1 = getCoo(perso1);
-            lanceur2 = getCoo(perso2);
-            qFruit=getFruitInventairePerso(perso0);
-            l1Fruit=getFruitInventairePerso(perso1);
-            l2Fruit=getFruitInventairePerso(perso2);
+           String[] tabInfoEquipe2 = infoEquipe2.split(",");
+            String[] Mirabelle = tabInfoEquipe2[2].split(":");
+            String[] Prune = tabInfoEquipe2[3].split(":");
+            String[] Cerise = tabInfoEquipe2[4].split(":");
+            String[] Framboise = tabInfoEquipe2[4].split(":");
+            String[] Chataigne = tabInfoEquipe2[4].split(":");
             
         }else if(splitRes[0].equals("3")){
-            String[] tabInfoEquipe3 = infoEquipe3.split(",");
-            String[] perso0 = tabInfoEquipe3[2].split(":");
-            String[] perso1 = tabInfoEquipe3[3].split(":");
-            String[] perso2 = tabInfoEquipe3[4].split(":");
-            quetcherback = getCoo(perso0);
-            lanceur1 = getCoo(perso1);
-            lanceur2 = getCoo(perso2);
-            qFruit=getFruitInventairePerso(perso0);
-            l1Fruit=getFruitInventairePerso(perso1);
-            l2Fruit=getFruitInventairePerso(perso2);
+           String[] tabInfoEquipe3 = infoEquipe3.split(",");
+            String[] Mirabelle = tabInfoEquipe3[2].split(":");
+            String[] Prune = tabInfoEquipe3[3].split(":");
+            String[] Cerise = tabInfoEquipe3[4].split(":");
+            String[] Framboise = tabInfoEquipe3[4].split(":");
+            String[] Chataigne = tabInfoEquipe3[4].split(":");
         }
     }
     
@@ -343,5 +335,18 @@ public class Parseur {
     
     public ArrayList<Case> getTabCooCasesFruits() {
         return tabCooCasesFruits;
+    }
+    
+    
+    public String getQuetcherback() {
+        return quetcherback;
+    }
+
+    public String getLanceur1() {
+        return lanceur1;
+    }
+
+    public String getLanceur2() {
+        return lanceur2;
     }
 }
