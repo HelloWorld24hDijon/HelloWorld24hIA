@@ -28,6 +28,7 @@ public class IA_HelloWorld_Fruitcheball {
         Carte c = new Carte();
         Parseur p = new Parseur("", c);
         p.creer_carte();
+        p.getCooNosPerso();
         /*
         InetAddress adresseIP;
         
