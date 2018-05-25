@@ -56,6 +56,8 @@ public abstract class Case {
        
     public abstract Type_Case getType(); 
         
+    public abstract boolean franchissable();
+    
     public String toString(){
         return ""; 
     }
